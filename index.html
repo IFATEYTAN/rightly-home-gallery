@@ -24,22 +24,21 @@
     --accent-ink: oklch(0.32 0.14 28);
   }
 
-  html, body { height: 100%; }
+  html, body { min-height: 100%; }
   body {
     background: var(--bg);
     font-family: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
     overscroll-behavior-y: none;
   }
 
   /* ─── Top bar ─── */
   .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,7 +79,6 @@
 
   /* ─── Stage (mockup viewer) ─── */
   .stage {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,6 +86,7 @@
     gap: 20px;
     padding: 28px 28px 16px;
     touch-action: pan-y;
+    min-height: calc(100dvh - 120px);
   }
 
   .viewer-wrap {
@@ -96,7 +95,6 @@
     align-items: center;
     gap: 20px;
     width: 100%;
-    max-width: 520px;
   }
 
   .viewer-meta {
@@ -127,46 +125,28 @@
     line-height: 1.5;
   }
 
-  /* Phone frame */
-  .phone {
-    width: 320px;
-    height: 660px;
-    background: oklch(0.10 0.012 60);
-    border-radius: 48px;
-    padding: 10px;
-    position: relative;
-    box-shadow: 0 30px 60px -20px oklch(0.18 0.012 60 / 0.35), 0 12px 24px -8px oklch(0.18 0.012 60 / 0.18);
-    flex-shrink: 0;
-  }
-  .phone::before {
-    content: '';
-    position: absolute;
-    top: 16px; left: 50%;
-    transform: translateX(-50%);
-    width: 100px; height: 26px;
-    background: oklch(0.10 0.012 60);
-    border-radius: 14px;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .phone-screen {
-    width: 100%;
-    height: 100%;
-    border-radius: 38px;
+  /* Gallery card */
+  .gallery-card {
+    width: 380px;
+    height: 900px;
+    border-radius: 24px;
     overflow: hidden;
     position: relative;
-    background: var(--bg);
+    background: var(--surface);
+    box-shadow: 0 12px 48px -12px oklch(0.18 0.012 60 / 0.20), 0 0 0 1px oklch(0.18 0.012 60 / 0.06);
+    flex-shrink: 0;
+    container-type: inline-size;
   }
-  .phone-screen iframe {
+  .gallery-card iframe {
     position: absolute;
     top: 0;
     right: 0;
     width: 420px;
-    height: 868px;
+    height: 1400px;
     border: none;
-    background: var(--bg);
+    background: var(--surface);
     display: block;
-    transform: scale(0.7143);
+    transform: scale(calc(100cqw / 420));
     transform-origin: top right;
   }
 
@@ -315,19 +295,11 @@
     .nav-arrow { width: 40px; height: 40px; }
     .nav-arrow svg { width: 16px; height: 16px; }
 
-    /* Phone scales to viewport */
-    .phone {
-      width: min(280px, calc(100vw - 110px));
-      height: min(580px, calc((100vw - 110px) * 2.0625));
-      border-radius: 38px;
-      padding: 8px;
-    }
-    .phone::before { width: 80px; height: 22px; top: 12px; border-radius: 12px; }
-    .phone-screen { border-radius: 30px; }
-    /* Recompute scale: inner width = phone width - 16px padding */
-    .phone-screen iframe {
-      width: 420px;
-      transform: scale(calc((min(280px, 100vw - 110px) - 16px) / 420));
+    /* Gallery card scales to viewport */
+    .gallery-card {
+      width: min(320px, calc(100vw - 100px));
+      height: min(720px, 72vh);
+      border-radius: 20px;
     }
 
     .viewer-title { font-size: 18px; }
@@ -357,12 +329,9 @@
 
   /* Very small phones */
   @media (max-width: 380px) {
-    .phone {
-      width: min(260px, calc(100vw - 100px));
-      height: min(540px, calc((100vw - 100px) * 2.0625));
-    }
-    .phone-screen iframe {
-      transform: scale(calc((min(260px, 100vw - 100px) - 16px) / 420));
+    .gallery-card {
+      width: min(260px, calc(100vw - 90px));
+      height: min(600px, 65vh);
     }
     .nav-arrow { width: 36px; height: 36px; }
   }
@@ -454,7 +423,7 @@
       const m = mockups[current];
       const frame = m.type === 'wide'
         ? `<div class="wide-stage"><iframe src="${m.src}" loading="lazy"></iframe></div>`
-        : `<div class="phone"><div class="phone-screen"><iframe src="${m.src}" loading="lazy" scrolling="no"></iframe></div></div>`;
+        : `<div class="gallery-card"><iframe src="${m.src}" loading="lazy"></iframe></div>`;
 
       stage.innerHTML = `
         <div class="viewer-wrap">
