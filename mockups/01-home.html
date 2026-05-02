@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rightly · Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --ink: oklch(0.18 0.012 60);
+    --ink-2: oklch(0.32 0.012 60);
+    --ink-3: oklch(0.50 0.010 60);
+    --ink-4: oklch(0.68 0.008 60);
+    --line: oklch(0.18 0.012 60 / 0.08);
+    --line-2: oklch(0.18 0.012 60 / 0.14);
+    --bg: oklch(0.97 0.008 75);
+    --bg-2: oklch(0.94 0.012 75);
+    --surface: oklch(1 0 0);
+    --accent: oklch(0.62 0.21 28);
+    --accent-soft: oklch(0.93 0.06 35);
+    --accent-ink: oklch(0.32 0.14 28);
+    --ok: oklch(0.55 0.15 150);
+    --ok-soft: oklch(0.93 0.04 150);
+  }
+
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    font-family: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.4;
+    overscroll-behavior-y: none;
+  }
+
+  .device {
+    max-width: 420px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--bg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 22px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+  }
+  .status .live { display: inline-flex; align-items: center; gap: 6px; }
+  .status .live::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--ok);
+    box-shadow: 0 0 0 3px oklch(0.55 0.15 150 / 0.18);
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 22px 22px;
+  }
+  .avatar-block { display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 38px; height: 38px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, oklch(0.85 0.12 35) 0%, oklch(0.72 0.18 25) 100%);
+    color: oklch(0.20 0.04 25);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px; letter-spacing: -0.02em;
+  }
+  .avatar-meta { display: flex; flex-direction: column; gap: 2px; line-height: 1; }
+  .avatar-meta .label { font-size: 11px; color: var(--ink-3); font-weight: 500; letter-spacing: 0.02em; }
+  .avatar-meta .name { font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+  .icon-btn {
+    width: 38px; height: 38px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 200ms, transform 200ms;
+    color: var(--ink-2);
+  }
+  .icon-btn:active { transform: scale(0.94); background: var(--bg-2); }
+
+  .greet-block { padding: 0 22px 22px; }
+  .greet-line { font-size: 13px; color: var(--ink-3); font-weight: 500; margin-bottom: 6px; }
+  .question {
+    font-size: 26px; font-weight: 700;
+    letter-spacing: -0.025em; line-height: 1.15; color: var(--ink);
+  }
+  .question .highlight {
+    background: linear-gradient(180deg, transparent 60%, oklch(0.92 0.14 90) 60%);
+    padding: 0 2px;
+  }
+
+  .continue {
+    margin: 0 22px 18px;
+    background: var(--ink);
+    color: oklch(0.97 0.008 75);
+    border-radius: 22px;
+    padding: 18px 18px 16px;
+    position: relative; overflow: hidden; cursor: pointer;
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+    border: none; width: calc(100% - 44px); font-family: inherit; text-align: right;
+  }
+  .continue:active { transform: scale(0.985); }
+  .continue::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, oklch(0.62 0.21 28 / 0.4), transparent 70%);
+    pointer-events: none;
+  }
+  .continue-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px; position: relative;
+  }
+  .continue-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    color: oklch(0.85 0.05 35); text-transform: uppercase;
+  }
+  .continue-tag::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%; background: var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  .continue-time { font-size: 11px; color: oklch(0.65 0.012 60); font-weight: 500; }
+  .continue-title {
+    font-size: 17px; font-weight: 600;
+    letter-spacing: -0.015em; line-height: 1.25;
+    margin-bottom: 12px; position: relative;
+  }
+  .continue-foot {
+    display: flex; justify-content: space-between; align-items: center; position: relative;
+  }
+  .continue-progress {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: oklch(0.78 0.012 60); font-weight: 500;
+  }
+  .progress-dots { display: flex; gap: 3px; }
+  .progress-dots span {
+    width: 14px; height: 3px;
+    border-radius: 2px; background: oklch(0.40 0.012 60);
+  }
+  .progress-dots span.done { background: var(--accent); }
+  .continue-cta {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 13px; font-weight: 600; color: oklch(0.97 0.008 75);
+  }
+
+  .section-label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 18px 22px 10px;
+  }
+  .section-label h2 { font-size: 13px; font-weight: 600; color: var(--ink-2); letter-spacing: 0.02em; }
+  .section-label .meta { font-size: 12px; color: var(--ink-4); font-weight: 500; }
+
+  .systems { padding: 0 22px; display: flex; flex-direction: column; gap: 10px; }
+  .system {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), border-color 200ms;
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 14px; align-items: center; text-align: right;
+    width: 100%; font-family: inherit;
+  }
+  .system:active { transform: scale(0.985); border-color: var(--line-2); }
+  .system-icon {
+    width: 44px; height: 44px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .system.school .system-icon { background: var(--accent-soft); color: var(--accent-ink); }
+  .system.work .system-icon { background: oklch(0.93 0.05 145); color: oklch(0.32 0.12 145); }
+  .system-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .system-title { font-size: 16px; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); line-height: 1.15; }
+  .system-desc {
+    font-size: 12.5px; color: var(--ink-3); font-weight: 500; line-height: 1.35;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .system-arrow { color: var(--ink-4); flex-shrink: 0; }
+
+  .recents { margin-top: 6px; }
+  .recents-track {
+    display: flex; gap: 10px; padding: 0 22px 6px;
+    overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .recents-track::-webkit-scrollbar { display: none; }
+  .recent {
+    flex-shrink: 0; width: 168px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px; padding: 14px;
+    scroll-snap-align: start; cursor: pointer;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: transform 200ms;
+  }
+  .recent:active { transform: scale(0.97); }
+  .recent-tag {
+    display: inline-flex; align-self: flex-start;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
+  }
+  .recent-tag.school { background: var(--accent-soft); color: var(--accent-ink); }
+  .recent-tag.work { background: oklch(0.93 0.05 145); color: oklch(0.32 0.12 145); }
+  .recent h4 {
+    font-size: 13.5px; font-weight: 600; line-height: 1.3;
+    color: var(--ink); letter-spacing: -0.01em;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .recent-meta { font-size: 11px; color: var(--ink-4); font-weight: 500; margin-top: auto; }
+
+  .action-bar {
+    position: sticky; bottom: 0;
+    margin-top: auto;
+    padding: 16px 18px calc(16px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, oklch(0.97 0.008 75 / 0) 0%, var(--bg) 30%);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .new-case {
+    flex: 1; background: var(--ink);
+    color: oklch(0.97 0.008 75);
+    border: none; border-radius: 18px;
+    padding: 16px 18px;
+    font-family: inherit; font-size: 15px; font-weight: 600;
+    letter-spacing: -0.01em; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative; overflow: hidden;
+  }
+  .new-case:active { transform: scale(0.98); }
+  .new-case::before {
+    content: '';
+    position: absolute; top: 0; bottom: 0; right: 0;
+    width: 70px;
+    background: linear-gradient(270deg, var(--accent) 0%, transparent 100%);
+    opacity: 0.35;
+  }
+  .new-case .label { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; position: relative; }
+  .new-case .small { font-size: 11px; font-weight: 500; color: oklch(0.78 0.012 60); letter-spacing: 0.02em; }
+  .new-case .big { font-size: 15px; font-weight: 700; }
+  .new-case .plus {
+    width: 36px; height: 36px;
+    background: var(--accent);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: oklch(0.97 0.008 75); flex-shrink: 0; position: relative;
+  }
+  .my-files {
+    width: 56px; height: 56px;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 1px solid var(--line-2);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--ink); position: relative;
+    transition: transform 220ms;
+  }
+  .my-files:active { transform: scale(0.94); }
+  .my-files .badge {
+    position: absolute; top: -2px; left: -2px;
+    background: var(--accent); color: white;
+    font-size: 10px; font-weight: 700;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--bg);
+  }
+
+  .disclaimer {
+    padding: 0 22px 14px;
+    font-size: 11px; color: var(--ink-4);
+    line-height: 1.5; text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="device">
+
+    <div class="status">
+      <span class="live">פעיל</span>
+      <span>18:40</span>
+    </div>
+
+    <div class="topbar">
+      <div class="avatar-block">
+        <div class="avatar">א</div>
+        <div class="avatar-meta">
+          <span class="label">היי</span>
+          <span class="name">אילון</span>
+        </div>
+      </div>
+      <button class="icon-btn" aria-label="תפריט">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="greet-block">
+      <div class="greet-line">17:42 · יום שבת</div>
+      <h1 class="question">מה <span class="highlight">קרה לך</span> היום?</h1>
+    </div>
+
+    <button class="continue" aria-label="המשך תיק פתוח">
+      <div class="continue-row">
+        <span class="continue-tag">תיק פתוח</span>
+        <span class="continue-time">לפני 3 ימים</span>
+      </div>
+      <div class="continue-title">השעיה ל-3 ימים בלי לדבר איתי קודם, בלי הורים</div>
+      <div class="continue-foot">
+        <div class="continue-progress">
+          <div class="progress-dots">
+            <span class="done"></span>
+            <span class="done"></span>
+            <span></span>
+            <span></span>
+          </div>
+          שלב 2 מתוך 4
+        </div>
+        <span class="continue-cta">
+          המשך
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 3.5 4.5 7 9 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+    </button>
+
+    <div class="section-label">
+      <h2>על מה תרצה לבדוק?</h2>
+      <span class="meta">2 תחומים</span>
+    </div>
+
+    <div class="systems">
+      <button class="system school">
+        <div class="system-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M11 3 2 7l9 4 9-4-9-4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M5 9v5c0 1 2.7 2.5 6 2.5S17 15 17 14V9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="system-body">
+          <div class="system-title">בית הספר</div>
+          <div class="system-desc">מורים, מבחנים, השעיות, התאמות</div>
+        </div>
+        <svg class="system-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M11 4.5 6.5 9 11 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <button class="system work">
+        <div class="system-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="3" y="6" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M8 6V4.5A1.5 1.5 0 0 1 9.5 3h3A1.5 1.5 0 0 1 14 4.5V6M3 11.5h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="system-body">
+          <div class="system-title">עבודה</div>
+          <div class="system-desc">שכר, שעות, פיטורים, יחס במקום</div>
+        </div>
+        <svg class="system-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M11 4.5 6.5 9 11 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="section-label" style="margin-top:8px">
+      <h2>תיקים אחרונים</h2>
+      <span class="meta">הצג הכל</span>
+    </div>
+
+    <div class="recents">
+      <div class="recents-track">
+        <div class="recent">
+          <span class="recent-tag school">בית ספר</span>
+          <h4>היעדרות לא מאושרת — מה הזכויות שלי?</h4>
+          <span class="recent-meta">נסגר · 28.4</span>
+        </div>
+        <div class="recent">
+          <span class="recent-tag work">עבודה</span>
+          <h4>פוטרתי בלי הודעה מוקדמת מהקפיטריה</h4>
+          <span class="recent-meta">נסגר · 22.4</span>
+        </div>
+        <div class="recent">
+          <span class="recent-tag school">בית ספר</span>
+          <h4>מורה לא מקבלת התאמות בכתה</h4>
+          <span class="recent-meta">נסגר · 15.4</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-bar">
+      <button class="new-case">
+        <span class="label">
+          <span class="small">קרה משהו חדש?</span>
+          <span class="big">פתח תיק חדש</span>
+        </span>
+        <span class="plus">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+      <button class="my-files" aria-label="התיקים שלי">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M3 6a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+        <span class="badge">3</span>
+      </button>
+    </div>
+
+    <p class="disclaimer">המידע מבוסס על החוק הישראלי, נועד להבהיר ולא להחליף ייעוץ משפטי אישי</p>
+
+  </div>
+</body>
+</html>
