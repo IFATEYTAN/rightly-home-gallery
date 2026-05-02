@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rightly — 4 כיוונים אסתטיים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Instrument+Serif:ital,wght@0,400;1,400&family=DM+Serif+Display&family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Heebo',sans-serif;background:#0a0a0a;color:#fff;padding:48px 20px;min-height:100vh}
+.container{max-width:1500px;margin:0 auto}
+.page-h1{font-family:'Fraunces',serif;font-size:54px;font-weight:600;text-align:center;margin-bottom:8px;color:#fff;letter-spacing:-2px}
+.page-h1 em{font-style:italic;color:#888}
+.page-sub{text-align:center;color:#888;font-size:14px;margin-bottom:56px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px;align-items:start}
+@media(max-width:1100px){.grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+
+.version{display:flex;flex-direction:column;gap:20px}
+.version-label{padding:0 8px}
+.version-num{font-family:'Space Mono',monospace;font-size:11px;color:#666;letter-spacing:2px;margin-bottom:8px}
+.version-name{font-family:'Fraunces',serif;font-size:26px;color:#fff;font-weight:600;margin-bottom:6px;letter-spacing:-0.5px}
+.version-name em{font-style:italic;color:#999}
+.version-desc{color:#888;font-size:13px;line-height:1.6;margin-bottom:12px}
+.version-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:0.5px;background:rgba(255,255,255,0.06);color:#aaa;border:1px solid rgba(255,255,255,0.08);font-family:'Space Mono',monospace}
+
+.phone{width:100%;max-width:440px;margin:0 auto;border-radius:42px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);position:relative;min-height:880px;display:flex;flex-direction:column}
+.status{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-size:13px;font-weight:600;font-family:'Space Mono',monospace}
+
+/* ============================================================ */
+/* V1 — DARK FUTURIST (טכנולוגי-יוקרתי, לילי) */
+/* ============================================================ */
+.v1{background:#0a0a0f;color:#e8e8ec;font-family:'Heebo',sans-serif;position:relative}
+.v1::before{content:'';position:absolute;top:0;left:0;right:0;height:600px;background:radial-gradient(ellipse at top center,rgba(255,90,40,0.18) 0%,transparent 60%);pointer-events:none}
+.v1::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,0.04) 1px,transparent 0);background-size:24px 24px;pointer-events:none;opacity:0.6}
+.v1 .status{color:#fff}
+.v1-header{display:flex;justify-content:space-between;align-items:center;padding:8px 24px 32px;position:relative;z-index:1}
+.v1-user{display:flex;align-items:center;gap:10px}
+.v1-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#ff5a28 0%,#c93a1a 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;box-shadow:0 0 24px rgba(255,90,40,0.4)}
+.v1-user-text{text-align:right}
+.v1-user-eyebrow{font-size:9px;color:#666;letter-spacing:2px;text-transform:uppercase;font-family:'Space Mono',monospace}
+.v1-user-name{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:#fff;line-height:1.2}
+.v1-menu{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:#aaa;backdrop-filter:blur(10px)}
+.v1-hero{text-align:center;padding:24px 32px 32px;position:relative;z-index:1}
+.v1-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,90,40,0.12);border:1px solid rgba(255,90,40,0.3);border-radius:999px;font-size:10px;color:#ff7a48;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:24px;font-family:'Space Mono',monospace}
+.v1-eyebrow-dot{width:5px;height:5px;background:#ff5a28;border-radius:50%;box-shadow:0 0 8px rgba(255,90,40,0.8);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.v1-title{font-family:'Fraunces',serif;font-size:80px;font-weight:400;line-height:0.92;color:#fff;letter-spacing:-4px;margin-bottom:16px;font-variation-settings:"opsz" 144,"SOFT" 100}
+.v1-title em{font-style:italic;font-weight:400;color:#ff5a28}
+.v1-tagline{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:#999;margin-bottom:8px;font-weight:400}
+.v1-subtag{font-size:12px;color:#666;font-family:'Space Mono',monospace;letter-spacing:1px}
+.v1-ai{margin:0 20px 24px;background:linear-gradient(180deg,rgba(255,90,40,0.08) 0%,rgba(255,90,40,0.02) 100%);border:1px solid rgba(255,90,40,0.25);border-radius:24px;padding:24px;position:relative;overflow:hidden;backdrop-filter:blur(20px);z-index:1}
+.v1-ai::before{content:'';position:absolute;top:-2px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,#ff5a28,transparent)}
+.v1-ai-eyebrow{font-size:9px;color:#ff7a48;letter-spacing:3px;font-family:'Space Mono',monospace;margin-bottom:12px;text-transform:uppercase;font-weight:700}
+.v1-ai-title{font-family:'Fraunces',serif;font-size:24px;font-weight:500;color:#fff;line-height:1.2;margin-bottom:8px;letter-spacing:-0.5px}
+.v1-ai-sub{font-size:13px;color:#999;line-height:1.5;margin-bottom:20px}
+.v1-ai-cta{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,90,40,0.2);border-radius:14px}
+.v1-ai-cta-text{font-family:'Space Mono',monospace;font-size:11px;color:#888;letter-spacing:0.5px}
+.v1-ai-cta-arrow{width:32px;height:32px;border-radius:50%;background:#ff5a28;display:flex;align-items:center;justify-content:center;color:#0a0a0f}
+.v1-divider{padding:0 32px;margin-bottom:18px;display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+.v1-divider span{font-size:9px;color:#555;letter-spacing:3px;text-transform:uppercase;font-family:'Space Mono',monospace}
+.v1-divider::before,.v1-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent)}
+.v1-cards{padding:0 20px 20px;display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.v1-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:18px;display:flex;align-items:center;gap:14px;backdrop-filter:blur(10px)}
+.v1-card-num{font-family:'Space Mono',monospace;font-size:10px;color:#444;letter-spacing:1px}
+.v1-card-text{flex:1;text-align:right}
+.v1-card-title{font-family:'Fraunces',serif;font-size:18px;color:#fff;font-weight:500;margin-bottom:2px;letter-spacing:-0.3px}
+.v1-card-sub{font-size:11.5px;color:#777;line-height:1.5;font-family:'Space Mono',monospace;letter-spacing:0.2px}
+.v1-card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04)}
+.v1-card-icon svg{width:22px;height:22px;color:#ff5a28}
+.v1-card:nth-child(2) .v1-card-icon svg{color:#ffa040}
+.v1-card:nth-child(3) .v1-card-icon svg{color:#ffd060}
+
+/* ============================================================ */
+/* V2 — EDITORIAL MAGAZINE (יוקרה דרמתית, לבן+שחור+אדום) */
+/* ============================================================ */
+.v2{background:#fafaf7;color:#0d0d0d;font-family:'Assistant',sans-serif}
+.v2 .status{color:#0d0d0d}
+.v2-header{display:flex;justify-content:space-between;align-items:center;padding:8px 24px 16px;border-bottom:1px solid #0d0d0d}
+.v2-menu{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#0d0d0d;font-weight:700;display:flex;align-items:center;gap:6px}
+.v2-menu-dot{width:6px;height:6px;background:#dc2626;border-radius:50%}
+.v2-user{display:flex;align-items:center;gap:10px}
+.v2-user-text{text-align:right}
+.v2-user-eyebrow{font-family:'Space Mono',monospace;font-size:9px;color:#999;letter-spacing:1.5px;text-transform:uppercase;line-height:1}
+.v2-user-name{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:#0d0d0d;font-weight:500;line-height:1.2}
+.v2-avatar{width:36px;height:36px;border-radius:50%;background:#0d0d0d;color:#fafaf7;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-style:italic;font-size:18px;font-weight:600}
+.v2-issue{padding:8px 24px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #0d0d0d}
+.v2-issue-meta{font-family:'Space Mono',monospace;font-size:10px;color:#666;letter-spacing:1.5px;text-transform:uppercase}
+.v2-issue-meta strong{color:#0d0d0d}
+.v2-hero{padding:48px 32px 32px;text-align:center;border-bottom:1px solid #0d0d0d;position:relative}
+.v2-hero-mark{position:absolute;top:24px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:9px;color:#999;letter-spacing:3px;text-transform:uppercase}
+.v2-title{font-family:'Fraunces',serif;font-size:120px;line-height:0.85;font-weight:300;color:#0d0d0d;letter-spacing:-6px;margin-bottom:8px;font-variation-settings:"opsz" 144}
+.v2-title em{font-style:italic;font-weight:300;color:#dc2626}
+.v2-tagline{font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:#0d0d0d;font-weight:400;margin-top:16px;margin-bottom:12px;line-height:1.3}
+.v2-subtag{font-family:'Space Mono',monospace;font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase}
+.v2-ai{padding:32px;border-bottom:1px solid #0d0d0d;background:#0d0d0d;color:#fafaf7;position:relative}
+.v2-ai-eyebrow{font-family:'Space Mono',monospace;font-size:10px;color:#dc2626;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.v2-ai-eyebrow::before{content:'';width:24px;height:1px;background:#dc2626}
+.v2-ai-title{font-family:'Fraunces',serif;font-size:36px;font-weight:300;line-height:1.05;margin-bottom:14px;letter-spacing:-1.5px}
+.v2-ai-title em{font-style:italic;color:#dc2626;font-weight:400}
+.v2-ai-sub{font-size:14px;color:#999;line-height:1.6;margin-bottom:24px;max-width:300px}
+.v2-ai-cta{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;background:#dc2626;color:#fafaf7;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;border-radius:0}
+.v2-section{padding:24px 32px 12px;border-bottom:1px solid rgba(13,13,13,0.1)}
+.v2-section-label{font-family:'Space Mono',monospace;font-size:10px;color:#666;letter-spacing:3px;text-transform:uppercase;font-weight:700}
+.v2-cards{padding:0}
+.v2-card{padding:24px 32px;display:flex;align-items:center;gap:20px;border-bottom:1px solid rgba(13,13,13,0.1);position:relative}
+.v2-card:last-child{border-bottom:none}
+.v2-card-num{font-family:'Fraunces',serif;font-style:italic;font-size:36px;font-weight:300;color:#dc2626;line-height:1;flex-shrink:0;width:40px}
+.v2-card-text{flex:1;text-align:right}
+.v2-card-title{font-family:'Fraunces',serif;font-size:24px;font-weight:500;color:#0d0d0d;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}
+.v2-card-sub{font-size:13px;color:#666;line-height:1.5}
+.v2-card-arrow{width:36px;height:36px;border:1px solid #0d0d0d;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0d0d0d;flex-shrink:0}
+
+/* ============================================================ */
+/* V3 — ORGANIC WARM (בז' חם, פס' מודגשים, lib aesthetic) */
+/* ============================================================ */
+.v3{background:linear-gradient(180deg,#f4ede0 0%,#ebe1cf 100%);color:#2a1f15;font-family:'Heebo',sans-serif;position:relative;overflow:hidden}
+.v3::before{content:'';position:absolute;top:-200px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(204,87,57,0.15) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.v3::after{content:'';position:absolute;bottom:-100px;left:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(74,124,89,0.12) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.v3 .status{color:#2a1f15}
+.v3-header{display:flex;justify-content:space-between;align-items:center;padding:8px 28px 24px;position:relative;z-index:1}
+.v3-menu{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.5);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:#2a1f15;border:1px solid rgba(42,31,21,0.1)}
+.v3-user{display:flex;align-items:center;gap:12px}
+.v3-user-text{text-align:right}
+.v3-user-eyebrow{font-size:11px;color:#8a7560;letter-spacing:0.3px;font-weight:400;font-family:'Fraunces',serif;font-style:italic}
+.v3-user-name{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#2a1f15;line-height:1.1;letter-spacing:-0.3px}
+.v3-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#cc5739 0%,#a23d22 100%);color:#f4ede0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:18px;box-shadow:0 8px 24px rgba(204,87,57,0.3)}
+.v3-hero{text-align:center;padding:32px 32px 36px;position:relative;z-index:1}
+.v3-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:32px}
+.v3-logo-mark{width:48px;height:48px;border-radius:14px;background:#2a1f15;display:flex;align-items:center;justify-content:center;color:#cc5739;font-family:'Fraunces',serif;font-size:26px;font-weight:600;font-style:italic;line-height:1;box-shadow:0 8px 16px rgba(42,31,21,0.2)}
+.v3-logo-text{font-family:'Space Mono',monospace;font-size:9px;color:#8a7560;letter-spacing:3px;text-transform:uppercase}
+.v3-title{font-family:'Fraunces',serif;font-size:88px;font-weight:400;line-height:0.92;color:#2a1f15;letter-spacing:-3px;margin-bottom:18px;font-variation-settings:"opsz" 144,"SOFT" 100}
+.v3-title em{font-style:italic;color:#cc5739;font-weight:400}
+.v3-tagline-wrap{display:inline-block;padding:8px 20px;background:rgba(255,255,255,0.4);border-radius:999px;backdrop-filter:blur(10px);border:1px solid rgba(42,31,21,0.08);margin-bottom:8px}
+.v3-tagline{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:#2a1f15;font-weight:400}
+.v3-subtag{font-size:12px;color:#8a7560;font-weight:400;margin-top:8px}
+.v3-ai{margin:0 20px 28px;background:#2a1f15;color:#f4ede0;border-radius:32px;padding:28px 24px;position:relative;overflow:hidden;z-index:1}
+.v3-ai::before{content:'';position:absolute;top:-50%;right:-30%;width:300px;height:300px;background:radial-gradient(circle,rgba(204,87,57,0.4) 0%,transparent 60%);border-radius:50%}
+.v3-ai-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(204,87,57,0.15);border:1px solid rgba(204,87,57,0.3);border-radius:999px;font-size:10px;color:#ff8b65;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:18px;position:relative;z-index:1;font-family:'Space Mono',monospace}
+.v3-ai-eyebrow-dot{width:5px;height:5px;background:#ff8b65;border-radius:50%}
+.v3-ai-title{font-family:'Fraunces',serif;font-size:28px;font-weight:400;line-height:1.1;margin-bottom:12px;letter-spacing:-0.8px;position:relative;z-index:1}
+.v3-ai-title em{font-style:italic;color:#ff8b65}
+.v3-ai-sub{font-size:13.5px;color:rgba(244,237,224,0.7);line-height:1.6;margin-bottom:22px;position:relative;z-index:1}
+.v3-ai-cta{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:rgba(244,237,224,0.08);border-radius:14px;border:1px solid rgba(244,237,224,0.1);position:relative;z-index:1}
+.v3-ai-cta-text{font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:rgba(244,237,224,0.8)}
+.v3-ai-cta-arrow{width:34px;height:34px;border-radius:50%;background:#cc5739;display:flex;align-items:center;justify-content:center;color:#fff}
+.v3-divider{padding:0 32px;margin-bottom:18px;display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+.v3-divider span{font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:#8a7560;font-weight:400}
+.v3-divider::before,.v3-divider::after{content:'';flex:1;height:1px;background:rgba(42,31,21,0.15)}
+.v3-cards{padding:0 20px 24px;display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+.v3-card{background:rgba(255,255,255,0.55);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.6);border-radius:24px;padding:18px;display:flex;align-items:center;gap:16px;box-shadow:0 4px 16px rgba(42,31,21,0.06)}
+.v3-card-text{flex:1;text-align:right}
+.v3-card-title{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#2a1f15;line-height:1.1;margin-bottom:3px;letter-spacing:-0.4px}
+.v3-card-sub{font-size:12px;color:#8a7560;line-height:1.5}
+.v3-card-icon{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.v3-card-icon svg{width:24px;height:24px;color:#fff}
+.v3-icon-1{background:linear-gradient(135deg,#4a7c59 0%,#3a5e44 100%);box-shadow:0 6px 16px rgba(74,124,89,0.3)}
+.v3-icon-2{background:linear-gradient(135deg,#cc5739 0%,#a23d22 100%);box-shadow:0 6px 16px rgba(204,87,57,0.3)}
+.v3-icon-3{background:linear-gradient(135deg,#d4a574 0%,#a8835a 100%);box-shadow:0 6px 16px rgba(168,131,90,0.3)}
+.v3-card-arrow{color:#bba692;flex-shrink:0}
+
+/* ============================================================ */
+/* V4 — BRUTAL MINIMAL (לבן/שחור קיצוני, גזרה מטאלית) */
+/* ============================================================ */
+.v4{background:#f0f0ec;color:#000;font-family:'Heebo',sans-serif;position:relative}
+.v4 .status{color:#000;font-weight:700}
+.v4-header{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 24px 24px}
+.v4-menu{padding:10px 14px;border:1.5px solid #000;background:transparent;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#000}
+.v4-user{display:flex;align-items:center;gap:12px}
+.v4-user-text{text-align:right}
+.v4-user-eyebrow{font-family:'Space Mono',monospace;font-size:9px;color:#000;letter-spacing:2px;text-transform:uppercase;font-weight:700;line-height:1.4}
+.v4-user-name{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#000;line-height:0.9;letter-spacing:1px}
+.v4-avatar{width:42px;height:42px;background:#000;color:#f0f0ec;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px}
+.v4-grid{padding:0 24px 24px}
+.v4-grid-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:2px solid #000;border-bottom:2px solid #000;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.v4-grid-bar strong{display:flex;align-items:center;gap:6px}
+.v4-grid-bar strong::before{content:'';width:8px;height:8px;background:#ff3300;border-radius:50%}
+.v4-hero{padding:32px 24px;border-bottom:2px solid #000}
+.v4-hero-meta{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#000;margin-bottom:24px;font-weight:700}
+.v4-title{font-family:'Bebas Neue',sans-serif;font-size:140px;line-height:0.85;letter-spacing:-2px;color:#000;margin-bottom:16px}
+.v4-title-row{display:flex;align-items:baseline;gap:12px;justify-content:flex-end}
+.v4-title-mark{font-family:'Fraunces',serif;font-style:italic;font-size:56px;color:#ff3300;font-weight:400;line-height:0.85}
+.v4-tagline{font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:#000;font-weight:400;line-height:1.3;text-align:right;margin-top:24px}
+.v4-subtag{font-family:'Space Mono',monospace;font-size:10px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-top:12px;text-align:right;font-weight:700}
+.v4-ai{padding:0;border-bottom:2px solid #000;background:#000;color:#f0f0ec;position:relative}
+.v4-ai-grid{padding:24px;border-bottom:1px solid rgba(240,240,236,0.2)}
+.v4-ai-num{font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:0.85;color:#ff3300;letter-spacing:-1px;margin-bottom:8px}
+.v4-ai-eyebrow{font-family:'Space Mono',monospace;font-size:10px;color:#ff3300;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.v4-ai-title{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:0.95;color:#f0f0ec;letter-spacing:0.5px;margin-bottom:12px}
+.v4-ai-sub{font-size:13px;color:rgba(240,240,236,0.6);line-height:1.5;margin-bottom:0;font-weight:300}
+.v4-ai-cta{padding:16px 24px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#f0f0ec}
+.v4-ai-cta-arrow{font-family:'Bebas Neue',sans-serif;font-size:20px;color:#ff3300;letter-spacing:1px}
+.v4-section{padding:14px 24px;border-bottom:2px solid #000;display:flex;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.v4-section-count{color:#ff3300}
+.v4-card{padding:24px;border-bottom:1px solid rgba(0,0,0,0.15);display:flex;align-items:flex-start;gap:16px;position:relative}
+.v4-card:last-child{border-bottom:none}
+.v4-card-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:#000;line-height:0.85;letter-spacing:-1px;flex-shrink:0;width:60px}
+.v4-card-text{flex:1;text-align:right}
+.v4-card-title{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#000;line-height:0.95;letter-spacing:0.5px;margin-bottom:6px}
+.v4-card-sub{font-size:12px;color:#666;line-height:1.5;font-family:'Space Mono',monospace}
+.v4-card-arrow{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#ff3300;line-height:1;flex-shrink:0}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h1 class="page-h1">Rightly · <em>4 כיוונים</em> אסתטיים</h1>
+  <p class="page-sub">כל אחד מהם הוא **התחייבות מלאה** לאסתטיקה אחת — לא שילוב בטוח. בחרי לפי תחושה, לא לפי "מה הכי הגיוני".</p>
+
+  <div class="grid">
+
+    <!-- ===================== V1 — DARK FUTURIST ===================== -->
+    <div class="version">
+      <div class="phone v1">
+        <div class="status"><span>15:05</span><span style="color:#ff5a28">● LIVE</span></div>
+        <div class="v1-header">
+          <div class="v1-menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+          <div class="v1-user">
+            <div class="v1-user-text">
+              <div class="v1-user-eyebrow">USER</div>
+              <div class="v1-user-name">יפעת</div>
+            </div>
+            <div class="v1-avatar">י</div>
+          </div>
+        </div>
+        <div class="v1-hero">
+          <div class="v1-eyebrow"><span class="v1-eyebrow-dot"></span>SYSTEM ONLINE · 2026</div>
+          <h1 class="v1-title"><em>Right</em>ly</h1>
+          <p class="v1-tagline">הזכויות שלך, בבירור.</p>
+          <p class="v1-subtag">// ספרי מה קרה — ננווט יחד</p>
+        </div>
+        <div class="v1-ai">
+          <div class="v1-ai-eyebrow">// AI ASSISTANT · ACTIVE</div>
+          <div class="v1-ai-title">מה קרה? ספרי לי במילים שלך.</div>
+          <div class="v1-ai-sub">תשובה ברורה ומותאמת — לפי החוק הישראלי, תוך שניות.</div>
+          <div class="v1-ai-cta">
+            <span class="v1-ai-cta-text">EXAMPLE: ״פוטרתי בלי הודעה...״</span>
+            <div class="v1-ai-cta-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg></div>
+          </div>
+        </div>
+        <div class="v1-divider"><span>OR · BROWSE BY DOMAIN</span></div>
+        <div class="v1-cards">
+          <div class="v1-card"><span class="v1-card-num">01</span><div class="v1-card-text"><div class="v1-card-title">זכויות תלמידים</div><div class="v1-card-sub">// בית ספר · תקנון · מורים</div></div><div class="v1-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div></div>
+          <div class="v1-card"><span class="v1-card-num">02</span><div class="v1-card-text"><div class="v1-card-title">זכויות בעבודה</div><div class="v1-card-sub">// משכורת · חופשה · פיטורים</div></div><div class="v1-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div></div>
+          <div class="v1-card"><span class="v1-card-num">03</span><div class="v1-card-text"><div class="v1-card-title">האזור שלי</div><div class="v1-card-sub">// 3 מקרים פעילים</div></div><div class="v1-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div></div>
+        </div>
+      </div>
+      <div class="version-label">
+        <div class="version-num">V01 · DARK FUTURIST</div>
+        <div class="version-name">לילי <em>טכנולוגי-יוקרתי</em></div>
+        <div class="version-desc">לבני שחור עמוק עם זוהר ניאון כתום. נראה כמו טרמינל של חברת אבטחה — מערכת שמתעוררת לחיים.</div>
+        <div class="version-tags">
+          <span class="tag">Fraunces</span>
+          <span class="tag">Space Mono</span>
+          <span class="tag">Neon Glow</span>
+          <span class="tag">High-Tech</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== V2 — EDITORIAL MAGAZINE ===================== -->
+    <div class="version">
+      <div class="phone v2">
+        <div class="status"><span>15:05</span><span>2026 · 05 · 02</span></div>
+        <div class="v2-header">
+          <div class="v2-menu"><span class="v2-menu-dot"></span>MENU</div>
+          <div class="v2-user">
+            <div class="v2-user-text">
+              <div class="v2-user-eyebrow">SUBSCRIBER</div>
+              <div class="v2-user-name">יפעת</div>
+            </div>
+            <div class="v2-avatar">י</div>
+          </div>
+        </div>
+        <div class="v2-issue">
+          <span class="v2-issue-meta">VOL. <strong>I</strong> · ISSUE <strong>03</strong></span>
+          <span class="v2-issue-meta">RIGHTLY · ESTABLISHED 2026</span>
+        </div>
+        <div class="v2-hero">
+          <div class="v2-hero-mark">— THE FRONT PAGE —</div>
+          <h1 class="v2-title"><em>Right</em>ly.</h1>
+          <p class="v2-tagline">"הזכויות שלך, בבירור."</p>
+          <p class="v2-subtag">ספרי מה קרה · ננווט יחד</p>
+        </div>
+        <div class="v2-ai">
+          <div class="v2-ai-eyebrow">FEATURED · AI COUNSEL</div>
+          <h2 class="v2-ai-title">מה קרה? <em>ספרי לי</em> במילים שלך.</h2>
+          <p class="v2-ai-sub">תשובה ברורה, לפי החוק הישראלי. כמה שניות, לא תורים, לא ניירת.</p>
+          <a class="v2-ai-cta">START READING <span style="font-size:14px">→</span></a>
+        </div>
+        <div class="v2-section"><span class="v2-section-label">DEPARTMENTS · 3</span></div>
+        <div class="v2-cards">
+          <div class="v2-card"><span class="v2-card-num"><em>01</em></span><div class="v2-card-text"><div class="v2-card-title">זכויות תלמידים</div><div class="v2-card-sub">בית ספר, תקנון, מורים — מה מותר ומה לא?</div></div><div class="v2-card-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></div></div>
+          <div class="v2-card"><span class="v2-card-num"><em>02</em></span><div class="v2-card-text"><div class="v2-card-title">זכויות בעבודה</div><div class="v2-card-sub">משכורת, חופשה, פיטורים — מעודכן לחקיקה 2026.</div></div><div class="v2-card-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></div></div>
+          <div class="v2-card"><span class="v2-card-num"><em>03</em></span><div class="v2-card-text"><div class="v2-card-title">האזור שלי</div><div class="v2-card-sub">המקרים, המסמכים והכלים שלך · 3 פעילים.</div></div><div class="v2-card-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></div></div>
+        </div>
+      </div>
+      <div class="version-label">
+        <div class="version-num">V02 · EDITORIAL MAGAZINE</div>
+        <div class="version-name">מגזין <em>יוקרתי דרמתי</em></div>
+        <div class="version-desc">לבן + שחור + אדום אש. כמו עמוד שער של The Economist — סמכותי, מנומק, "אני מקור אמין".</div>
+        <div class="version-tags">
+          <span class="tag">Fraunces XL</span>
+          <span class="tag">Editorial</span>
+          <span class="tag">High Contrast</span>
+          <span class="tag">Authority</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== V3 — ORGANIC WARM ===================== -->
+    <div class="version">
+      <div class="phone v3">
+        <div class="status"><span>15:05</span><span>15:05</span></div>
+        <div class="v3-header">
+          <div class="v3-menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></div>
+          <div class="v3-user">
+            <div class="v3-user-text">
+              <div class="v3-user-eyebrow">שלום,</div>
+              <div class="v3-user-name">יפעת</div>
+            </div>
+            <div class="v3-avatar">י</div>
+          </div>
+        </div>
+        <div class="v3-hero">
+          <div class="v3-logo">
+            <div class="v3-logo-mark">R</div>
+            <div class="v3-logo-text">est. 2026</div>
+          </div>
+          <h1 class="v3-title"><em>Right</em>ly</h1>
+          <div class="v3-tagline-wrap"><span class="v3-tagline">הזכויות שלך, בבירור.</span></div>
+          <p class="v3-subtag">ספרי מה קרה — ננווט יחד</p>
+        </div>
+        <div class="v3-ai">
+          <div class="v3-ai-eyebrow"><span class="v3-ai-eyebrow-dot"></span>AI · ZMINH AKHSHAV</div>
+          <h2 class="v3-ai-title">מה קרה? ספרי לי <em>במילים שלך.</em></h2>
+          <p class="v3-ai-sub">תשובה ברורה ומותאמת — לפי החוק הישראלי, תוך שניות.</p>
+          <div class="v3-ai-cta">
+            <span class="v3-ai-cta-text">״פוטרתי בלי הודעה מוקדמת...״</span>
+            <div class="v3-ai-cta-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg></div>
+          </div>
+        </div>
+        <div class="v3-divider"><span>או בחרי תחום</span></div>
+        <div class="v3-cards">
+          <div class="v3-card">
+            <div class="v3-card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg></div>
+            <div class="v3-card-text"><div class="v3-card-title">זכויות תלמידים</div><div class="v3-card-sub">בית ספר, תקנון, מורים — מה מותר?</div></div>
+            <div class="v3-card-icon v3-icon-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          </div>
+          <div class="v3-card">
+            <div class="v3-card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg></div>
+            <div class="v3-card-text"><div class="v3-card-title">זכויות בעבודה</div><div class="v3-card-sub">משכורת, חופשה, פיטורים — לפי חוק</div></div>
+            <div class="v3-card-icon v3-icon-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          </div>
+          <div class="v3-card">
+            <div class="v3-card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg></div>
+            <div class="v3-card-text"><div class="v3-card-title">האזור שלי</div><div class="v3-card-sub">3 מקרים פעילים · עודכן השבוע</div></div>
+            <div class="v3-card-icon v3-icon-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="version-label">
+        <div class="version-num">V03 · ORGANIC WARM</div>
+        <div class="version-name">חם <em>אורגני</em> ומזמין</div>
+        <div class="version-desc">קרם חמים + לבני אדום-טרקוטה ושוקולד. אסתטיקה שאומרת ״סמכי עליי, אני אנושי״ — כמו תפריט של מסעדה אסטרטגית.</div>
+        <div class="version-tags">
+          <span class="tag">Fraunces SOFT</span>
+          <span class="tag">Terracotta</span>
+          <span class="tag">Glassmorphism</span>
+          <span class="tag">Hospitable</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== V4 — BRUTAL MINIMAL ===================== -->
+    <div class="version">
+      <div class="phone v4">
+        <div class="status"><span>15:05</span><span>15:05</span></div>
+        <div class="v4-header">
+          <div class="v4-menu">≡ MENU</div>
+          <div class="v4-user">
+            <div class="v4-user-text">
+              <div class="v4-user-eyebrow">USER 001</div>
+              <div class="v4-user-name">יפעת</div>
+            </div>
+            <div class="v4-avatar">י</div>
+          </div>
+        </div>
+        <div class="v4-grid">
+          <div class="v4-grid-bar">
+            <strong>RIGHTLY · 2026</strong>
+            <span>HOME / 01</span>
+          </div>
+        </div>
+        <div class="v4-hero">
+          <div class="v4-hero-meta">
+            <span>EST. 2026</span>
+            <span>HE · IL</span>
+          </div>
+          <div class="v4-title-row">
+            <h1 class="v4-title">RIGHTLY</h1>
+            <span class="v4-title-mark">.</span>
+          </div>
+          <p class="v4-tagline">"הזכויות שלך, בבירור."</p>
+          <p class="v4-subtag">— ספרי מה קרה — ננווט יחד —</p>
+        </div>
+        <div class="v4-ai">
+          <div class="v4-ai-grid">
+            <div class="v4-ai-num">00</div>
+            <div class="v4-ai-eyebrow">AI · PRIMARY ACTION</div>
+            <h2 class="v4-ai-title">מה קרה? ספרי לי במילים שלך.</h2>
+            <p class="v4-ai-sub">תשובה ברורה, לפי החוק הישראלי. תוך שניות.</p>
+          </div>
+          <div class="v4-ai-cta">
+            <span>START · ״פוטרתי...״</span>
+            <span class="v4-ai-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="v4-section">
+          <span>DOMAINS</span>
+          <span class="v4-section-count">[ 03 ]</span>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-num">01</div>
+          <div class="v4-card-text">
+            <div class="v4-card-title">זכויות תלמידים</div>
+            <div class="v4-card-sub">SCHOOL / RULES / TEACHERS</div>
+          </div>
+          <div class="v4-card-arrow">→</div>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-num">02</div>
+          <div class="v4-card-text">
+            <div class="v4-card-title">זכויות בעבודה</div>
+            <div class="v4-card-sub">SALARY / VACATION / TERMINATION</div>
+          </div>
+          <div class="v4-card-arrow">→</div>
+        </div>
+        <div class="v4-card">
+          <div class="v4-card-num">03</div>
+          <div class="v4-card-text">
+            <div class="v4-card-title">האזור שלי</div>
+            <div class="v4-card-sub">3 ACTIVE · UPDATED THIS WEEK</div>
+          </div>
+          <div class="v4-card-arrow">→</div>
+        </div>
+      </div>
+      <div class="version-label">
+        <div class="version-num">V04 · BRUTAL MINIMAL</div>
+        <div class="version-name">ברוטליזם <em>שלא מתנצל</em></div>
+        <div class="version-desc">שחור-לבן עם כתם אדום. גופנים גדולים מאוד, גזרה מטאלית, מסגרות חזקות. כמו פוסטר ברוטליסטי או מערכת תוכנה רצינית.</div>
+        <div class="version-tags">
+          <span class="tag">Bebas Neue</span>
+          <span class="tag">Brutalist</span>
+          <span class="tag">Grid System</span>
+          <span class="tag">Bold Statement</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
