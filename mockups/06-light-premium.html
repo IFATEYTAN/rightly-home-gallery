@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rightly — בהיר ופרימיום</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Heebo:wght@300;400;500;600;700;800&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Heebo',sans-serif;
+  background:#1a1a1a;
+  padding:48px 20px;
+  min-height:100vh;
+  color:#fff;
+}
+
+.page-header{max-width:900px;margin:0 auto 56px;text-align:center}
+.page-eyebrow{font-size:11px;letter-spacing:3px;color:#888;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+.page-h1{font-family:'Fraunces',serif;font-size:46px;font-weight:600;color:#fff;margin-bottom:10px;letter-spacing:-1.5px}
+.page-h1 em{font-style:italic;color:#d4925b}
+.page-sub{color:#999;font-size:14px;line-height:1.7;max-width:560px;margin:0 auto}
+
+.layout{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+@media(max-width:980px){.layout{grid-template-columns:1fr;max-width:480px}}
+
+/* ==================== PHONE FRAME ==================== */
+.phone{
+  width:100%;
+  max-width:440px;
+  margin:0 auto;
+  border-radius:48px;
+  overflow:hidden;
+  background:#f5efe4;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 50px 100px rgba(0,0,0,0.5),
+    0 25px 50px rgba(0,0,0,0.3);
+  position:relative;
+  min-height:880px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* רקע עדין עם warm glow */
+.phone::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 20% 0%,rgba(212,146,91,0.10) 0%,transparent 45%),
+    radial-gradient(ellipse at 80% 100%,rgba(168,184,158,0.08) 0%,transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.phone > *{position:relative;z-index:1}
+
+.status{
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+  font-size:14px;
+  font-weight:600;
+  color:#2d2620;
+}
+
+/* ==================== HEADER (שם משתמש בימין!) ==================== */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 24px 32px;
+}
+
+/* תפריט בשמאל */
+.menu-btn{
+  width:44px;height:44px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(45,38,32,0.06);
+  display:flex;align-items:center;justify-content:center;
+  color:#2d2620;
+  box-shadow:0 1px 3px rgba(45,38,32,0.04);
+}
+
+/* שם משתמש בימין */
+.user-block{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.user-text{
+  text-align:right;
+  line-height:1.2;
+}
+
+.user-greet{
+  font-size:11px;
+  color:#8a7d6e;
+  font-weight:400;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+}
+
+.user-name{
+  font-family:'Fraunces',serif;
+  font-size:16px;
+  color:#2d2620;
+  font-weight:600;
+  letter-spacing:-0.3px;
+}
+
+.user-avatar{
+  width:44px;height:44px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#3a4a36 0%,#2a3528 100%);
+  display:flex;align-items:center;justify-content:center;
+  color:#d4925b;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:18px;
+  box-shadow:
+    0 4px 12px rgba(45,58,42,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  position:relative;
+}
+.user-avatar::after{
+  content:'';
+  position:absolute;
+  bottom:-1px;right:-1px;
+  width:11px;height:11px;
+  background:#a8b89e;
+  border:2px solid #f5efe4;
+  border-radius:50%;
+}
+
+/* ==================== HERO (Logo → Title → Tagline) ==================== */
+.hero{
+  text-align:center;
+  padding:8px 32px 36px;
+}
+
+.hero-logo-wrap{
+  position:relative;
+  display:inline-block;
+  margin-bottom:28px;
+}
+
+.hero-logo-glow{
+  position:absolute;
+  inset:-28px;
+  background:radial-gradient(circle,rgba(212,146,91,0.18) 0%,transparent 65%);
+  border-radius:50%;
+  z-index:-1;
+}
+
+.hero-logo{
+  width:88px;height:88px;
+  border-radius:24px;
+  background:linear-gradient(155deg,#3a4a36 0%,#2a3528 100%);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:
+    0 20px 40px rgba(45,58,42,0.25),
+    0 8px 16px rgba(45,58,42,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    inset 0 -1px 0 rgba(0,0,0,0.2);
+  position:relative;
+  margin:0 auto;
+}
+
+.hero-logo-r{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:48px;
+  font-weight:600;
+  color:#f5efe4;
+  line-height:1;
+  letter-spacing:-2px;
+  position:relative;
+}
+.hero-logo-r::after{
+  content:'';
+  position:absolute;
+  bottom:7px;right:-7px;
+  width:9px;height:9px;
+  background:#d4925b;
+  border-radius:50%;
+  box-shadow:0 0 12px rgba(212,146,91,0.6);
+}
+
+.hero-title{
+  font-family:'Fraunces',serif;
+  font-size:68px;
+  font-weight:500;
+  line-height:0.95;
+  margin-bottom:14px;
+  color:#1a1612;
+  letter-spacing:-2.5px;
+  font-variation-settings:"opsz" 144,"SOFT" 100;
+}
+
+.hero-tagline{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:17px;
+  color:#3a3028;
+  font-weight:400;
+  margin-bottom:6px;
+  letter-spacing:-0.2px;
+}
+
+.hero-subtag{
+  font-size:13px;
+  color:#8a7d6e;
+  font-weight:400;
+  letter-spacing:0.1px;
+}
+
+/* קישוט עדין מתחת */
+.hero-divider{
+  width:36px;height:1px;
+  background:#d4925b;
+  margin:20px auto 0;
+  position:relative;
+}
+.hero-divider::before,.hero-divider::after{
+  content:'';
+  position:absolute;
+  top:50%;
+  width:3px;height:3px;
+  background:#d4925b;
+  border-radius:50%;
+  transform:translateY(-50%);
+}
+.hero-divider::before{left:-10px}
+.hero-divider::after{right:-10px}
+
+/* ==================== AI CARD (כרטיס ראשי) ==================== */
+.ai-card{
+  margin:0 20px 28px;
+  background:linear-gradient(155deg,#3a4a36 0%,#2a3528 100%);
+  border-radius:26px;
+  padding:24px 22px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:
+    0 24px 48px -12px rgba(45,58,42,0.35),
+    0 8px 16px rgba(45,58,42,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.ai-card::before{
+  content:'';
+  position:absolute;
+  top:-30%;left:-10%;
+  width:280px;height:280px;
+  background:radial-gradient(circle,rgba(212,146,91,0.20) 0%,transparent 60%);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.ai-card-eyebrow{
+  font-size:10px;
+  color:#d4925b;
+  letter-spacing:2.5px;
+  font-weight:600;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  text-align:right;
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  justify-content:flex-end;
+}
+.ai-card-eyebrow::before{
+  content:'';
+  width:6px;height:6px;
+  background:#d4925b;
+  border-radius:50%;
+  box-shadow:0 0 8px rgba(212,146,91,0.6);
+}
+
+.ai-card-content{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  position:relative;
+  z-index:1;
+}
+
+.ai-card-text{
+  flex:1;
+  text-align:right;
+  color:#f5efe4;
+}
+
+.ai-card-title{
+  font-family:'Fraunces',serif;
+  font-size:21px;
+  font-weight:500;
+  margin-bottom:4px;
+  letter-spacing:-0.5px;
+  line-height:1.2;
+}
+
+.ai-card-sub{
+  font-size:12.5px;
+  color:rgba(245,239,228,0.72);
+  line-height:1.5;
+  font-weight:300;
+}
+
+.ai-card-icon{
+  width:56px;height:56px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#d4925b 0%,#b8753f 100%);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  box-shadow:
+    0 8px 20px rgba(212,146,91,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+  color:#fff;
+}
+.ai-card-icon svg{width:26px;height:26px}
+
+.ai-card-cta{
+  margin-top:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 18px;
+  background:rgba(245,239,228,0.08);
+  border-radius:14px;
+  border:1px solid rgba(245,239,228,0.12);
+  position:relative;
+  z-index:1;
+}
+
+.ai-card-cta-text{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:13px;
+  color:rgba(245,239,228,0.7);
+  font-weight:400;
+}
+
+.ai-card-cta-arrow{
+  width:30px;height:30px;
+  border-radius:50%;
+  background:#d4925b;
+  display:flex;align-items:center;justify-content:center;
+  color:#2a3528;
+}
+
+/* ==================== DIVIDER ==================== */
+.section-divider{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:0 32px;
+  margin-bottom:18px;
+}
+.section-divider span{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:14px;
+  color:#8a7d6e;
+  font-weight:400;
+}
+.section-divider::before,.section-divider::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(45,38,32,0.15),transparent);
+}
+
+/* ==================== CARDS ==================== */
+.cards{
+  padding:0 20px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.card{
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.7);
+  border-radius:22px;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  box-shadow:
+    0 1px 2px rgba(45,38,32,0.04),
+    0 8px 24px rgba(45,38,32,0.06);
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.4) 0%,transparent 50%);
+  pointer-events:none;
+  border-radius:22px;
+}
+
+.card-arrow{
+  color:#bba692;
+  flex-shrink:0;
+}
+
+.card-text{
+  flex:1;
+  text-align:right;
+  position:relative;
+  z-index:1;
+}
+
+.card-title{
+  font-family:'Fraunces',serif;
+  font-size:19px;
+  font-weight:600;
+  color:#1a1612;
+  margin-bottom:3px;
+  letter-spacing:-0.3px;
+}
+
+.card-sub{
+  font-size:12.5px;
+  color:#8a7d6e;
+  line-height:1.5;
+  font-weight:400;
+}
+
+.card-meta{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-top:6px;
+  font-size:10.5px;
+  color:#a89886;
+  font-weight:500;
+}
+.card-meta-dot{
+  width:3px;height:3px;
+  background:#a8b89e;
+  border-radius:50%;
+}
+.card-meta strong{color:#d4925b;font-weight:700}
+
+.card-icon{
+  width:54px;height:54px;
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  position:relative;
+  z-index:1;
+}
+.card-icon svg{width:25px;height:25px;color:#fff}
+
+.icon-students{
+  background:linear-gradient(155deg,#3a4a36 0%,#2a3528 100%);
+  box-shadow:0 6px 16px rgba(45,58,42,0.25),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.icon-work{
+  background:linear-gradient(155deg,#a888a0 0%,#8a6a82 100%);
+  box-shadow:0 6px 16px rgba(138,106,130,0.3),inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.icon-mine{
+  background:linear-gradient(155deg,#d4925b 0%,#b8753f 100%);
+  box-shadow:0 6px 16px rgba(212,146,91,0.3),inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* ==================== TRUST FOOTER ==================== */
+.trust-bar{
+  margin:0 20px 20px;
+  padding:14px 18px;
+  background:rgba(255,255,255,0.5);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(45,38,32,0.06);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.trust-icon{
+  width:32px;height:32px;
+  border-radius:10px;
+  background:rgba(58,74,54,0.1);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  color:#3a4a36;
+}
+
+.trust-text{
+  flex:1;
+  text-align:right;
+  font-size:11px;
+  color:#3a3028;
+  line-height:1.5;
+  font-weight:400;
+}
+.trust-text strong{color:#1a1612;font-weight:600}
+
+/* ==================== EXPLANATION SIDE ==================== */
+.explanation{padding-top:60px;color:#e0d8c8}
+.exp-eyebrow{font-size:11px;letter-spacing:3px;color:#d4925b;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.exp-h2{font-family:'Fraunces',serif;font-size:38px;line-height:1.1;color:#fff;margin-bottom:20px;letter-spacing:-1px;font-weight:500}
+.exp-h2 em{font-style:italic;color:#d4925b}
+.exp-p{color:#999;font-size:15px;line-height:1.7;margin-bottom:28px}
+
+.exp-list{display:flex;flex-direction:column;gap:18px;margin-bottom:32px}
+.exp-item{display:flex;gap:14px;align-items:flex-start}
+.exp-item-num{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(212,146,91,0.15);
+  border:1px solid rgba(212,146,91,0.3);
+  color:#d4925b;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:14px;
+}
+.exp-item-text h3{
+  font-family:'Fraunces',serif;
+  font-size:17px;color:#fff;margin-bottom:4px;
+  font-weight:600;letter-spacing:-0.3px;
+}
+.exp-item-text p{font-size:13.5px;color:#999;line-height:1.6;margin:0}
+
+.exp-tokens{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;padding:22px;margin-top:24px;
+}
+.exp-tokens-title{
+  font-size:11px;letter-spacing:2px;color:#999;
+  text-transform:uppercase;font-weight:600;margin-bottom:14px;
+}
+.token-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:12px;color:#ccc}
+.token-row:last-child{margin-bottom:0}
+.token-swatch{width:18px;height:18px;border-radius:6px;flex-shrink:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1)}
+.token-row code{font-family:'JetBrains Mono','Courier New',monospace;color:#d4925b;font-size:11px;margin-right:auto}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-eyebrow">RIGHTLY · LIGHT PREMIUM</div>
+  <h1 class="page-h1">בסיס <em>זהה</em>. איכות של <em>פרימיום</em>.</h1>
+  <p class="page-sub">אותו מבנה (לוגו → כותרת → tagline → 3 כרטיסים) — אבל עם שכבות עומק, גוונים מדויקים וטיפוגרפיה אדיטוריאלית. רקע בהיר, שם משתמש בימין למעלה.</p>
+</div>
+
+<div class="layout">
+
+  <!-- ============= PHONE ============= -->
+  <div>
+    <div class="phone">
+
+      <div class="status">
+        <span>15:05</span>
+        <span style="color:#8a7d6e;font-weight:500">Rightly</span>
+      </div>
+
+      <!-- HEADER: תפריט בשמאל, שם משתמש בימין -->
+      <div class="header">
+        <div class="menu-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <circle cx="5" cy="12" r="1.5"/>
+            <circle cx="12" cy="12" r="1.5"/>
+            <circle cx="19" cy="12" r="1.5"/>
+          </svg>
+        </div>
+
+        <div class="user-block">
+          <div class="user-text">
+            <div class="user-greet">שלום,</div>
+            <div class="user-name">יפעת</div>
+          </div>
+          <div class="user-avatar">י</div>
+        </div>
+      </div>
+
+      <!-- HERO: Logo → Title → Tagline -->
+      <div class="hero">
+        <div class="hero-logo-wrap">
+          <div class="hero-logo-glow"></div>
+          <div class="hero-logo">
+            <span class="hero-logo-r">R</span>
+          </div>
+        </div>
+        <h1 class="hero-title">Rightly</h1>
+        <p class="hero-tagline">הזכויות שלך, בבירור.</p>
+        <p class="hero-subtag">ספרי מה קרה — ננווט יחד</p>
+        <div class="hero-divider"></div>
+      </div>
+
+      <!-- AI CARD -->
+      <div class="ai-card">
+        <div class="ai-card-eyebrow">AI יועצת · זמינה עכשיו</div>
+        <div class="ai-card-content">
+          <div class="ai-card-text">
+            <div class="ai-card-title">מה קרה? ספרי לי במילים שלך</div>
+            <div class="ai-card-sub">תשובה ברורה ומותאמת — לפי החוק הישראלי, תוך שניות</div>
+          </div>
+          <div class="ai-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2 9.5 8.5 3 9.5l5 4.5-1.5 7L12 17.5 18.5 21 17 14l5-4.5-6.5-1z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="ai-card-cta">
+          <span class="ai-card-cta-text">״פוטרתי בלי הודעה מוקדמת...״</span>
+          <div class="ai-card-cta-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="section-divider">
+        <span>או בחרי תחום</span>
+      </div>
+
+      <!-- 3 CARDS -->
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </div>
+          <div class="card-text">
+            <div class="card-title">זכויות תלמידים</div>
+            <div class="card-sub">בית ספר, תקנון, מורים — מה מותר ומה לא?</div>
+            <div class="card-meta">
+              <span>ניתוח מותאם לתקנון שלך</span>
+            </div>
+          </div>
+          <div class="card-icon icon-students">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </div>
+          <div class="card-text">
+            <div class="card-title">זכויות בעבודה</div>
+            <div class="card-sub">משכורת, חופשה, פיטורים — בודקים מול חוק</div>
+            <div class="card-meta">
+              <span class="card-meta-dot"></span>
+              <span>מעודכן <strong>לחקיקה 2026</strong></span>
+            </div>
+          </div>
+          <div class="card-icon icon-work">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </div>
+          <div class="card-text">
+            <div class="card-title">האזור שלי</div>
+            <div class="card-sub">המקרים, המסמכים והכלים השמורים שלך</div>
+            <div class="card-meta">
+              <span class="card-meta-dot"></span>
+              <strong>3 מקרים פעילים</strong>
+              <span style="color:#bba692">·</span>
+              <span>עודכן השבוע</span>
+            </div>
+          </div>
+          <div class="card-icon icon-mine">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TRUST FOOTER -->
+      <div class="trust-bar">
+        <div class="trust-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="trust-text">
+          <strong>החוק הישראלי, מותאם אישית.</strong> אנחנו עוזרים להבין — לא מחליפים עו״ד.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============= EXPLANATION ============= -->
+  <div class="explanation">
+    <div class="exp-eyebrow">מה השתנה</div>
+    <h2 class="exp-h2">אותו <em>בסיס</em>. שכבות של <em>פרימיום</em>.</h2>
+    <p class="exp-p">המבנה לא השתנה — לוגו, כותרת, tagline, ואז AI ו-3 כרטיסים. שינתי רק את ה<em>איכות</em> של כל אלמנט: טיפוגרפיה אדיטוריאלית, מיקרו-נתונים, glassmorphism עדין, ושם משתמש בימין למעלה כמו שביקשת.</p>
+
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-item-num">1</div>
+        <div class="exp-item-text">
+          <h3>שם משתמש בימין למעלה</h3>
+          <p>״שלום,״ באיטלקי + ״יפעת״ ב-Fraunces + אווטאר עם לוגו R פנימי. תפריט קטן בשמאל.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-item-num">2</div>
+        <div class="exp-item-text">
+          <h3>טיפוגרפיה Fraunces (במקום Playfair)</h3>
+          <p>פונט אדיטוריאלי עם variable axes — SOFT לתחושה אנושית, OPSZ לכותרות. נראה יוקרתי בלי להיות יבש.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-item-num">3</div>
+        <div class="exp-item-text">
+          <h3>כרטיס AI עם eyebrow + דוגמה</h3>
+          <p>״AI יועצת · זמינה עכשיו״ עם נקודה זוהרת + דוגמה קונקרטית בתחתית — המשתמשת יודעת בדיוק מה לעשות.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-item-num">4</div>
+        <div class="exp-item-text">
+          <h3>Micro-data שמראה ערך</h3>
+          <p>״מעודכן לחקיקה 2026״ · ״3 מקרים פעילים · עודכן השבוע״ · ״ניתוח מותאם״ — סימנים שהמערכת חיה.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-item-num">5</div>
+        <div class="exp-item-text">
+          <h3>Glassmorphism עדין על נייר</h3>
+          <p>הכרטיסים שקופים-קרים עם blur — מרגישים כמו זכוכית עדינה על נייר קרם. עומק בלי רעש.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="exp-tokens">
+      <div class="exp-tokens-title">Color Tokens</div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#3a4a36"></div>
+        <span>Olive Deep</span>
+        <code>#3a4a36</code>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#f5efe4"></div>
+        <span>Cream Base</span>
+        <code>#f5efe4</code>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#d4925b"></div>
+        <span>Amber Accent</span>
+        <code>#d4925b</code>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#a888a0"></div>
+        <span>Mauve Soft</span>
+        <code>#a888a0</code>
+      </div>
+      <div class="token-row">
+        <div class="token-swatch" style="background:#a8b89e"></div>
+        <span>Sage</span>
+        <code>#a8b89e</code>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
