@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rightly · Two Doors</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --bg: oklch(0.96 0.008 200);
+    --ink: oklch(0.18 0.012 220);
+    --ink-2: oklch(0.42 0.010 220);
+    --ink-3: oklch(0.62 0.008 220);
+    --line: oklch(0.18 0.012 220 / 0.10);
+    --teal: oklch(0.55 0.10 200);
+    --teal-deep: oklch(0.38 0.10 210);
+    --teal-soft: oklch(0.93 0.025 200);
+    --surface: oklch(1 0 0);
+  }
+
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    font-family: 'Heebo', -apple-system, sans-serif;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .device {
+    max-width: 420px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+  }
+
+  .status {
+    padding: 14px 22px 6px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+
+  .topbar {
+    padding: 10px 22px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .brand-mark {
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: var(--teal);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .me-pill {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 5px 12px 5px 5px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+  .me-pill .dot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--teal-soft);
+    color: var(--teal-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* The big question */
+  .greet-block {
+    padding: 0 22px 28px;
+  }
+  .greet-line {
+    font-size: 13px;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .greet-line svg {
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--teal);
+    margin-left: 4px;
+  }
+  .question {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.18;
+    margin-bottom: 8px;
+  }
+  .question-sub {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  /* Two doors — same size, side by side */
+  .doors {
+    padding: 0 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .door {
+    aspect-ratio: 0.78 / 1;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 22px 18px 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    color: inherit;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms;
+  }
+  .door:active {
+    transform: scale(0.97);
+    border-color: var(--teal);
+  }
+
+  /* Number on top corner */
+  .door-num {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+  }
+
+  .door-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--teal-soft);
+    color: var(--teal-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .door-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .door-sub {
+    font-size: 12.5px;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: auto;
+  }
+
+  /* Topics list inside the door */
+  .topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 14px;
+    margin-bottom: 16px;
+  }
+  .topic {
+    font-size: 11px;
+    color: var(--ink-2);
+    background: var(--bg);
+    padding: 4px 9px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .door-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .door-cta-text {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--teal-deep);
+  }
+  .door-cta-arrow {
+    width: 26px;
+    height: 26px;
+    background: var(--teal-soft);
+    color: var(--teal-deep);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), background 200ms;
+  }
+  .door:hover .door-cta-arrow {
+    background: var(--teal);
+    color: white;
+    transform: translateX(-3px);
+  }
+
+  /* Active state for door with open case */
+  .door.has-active {
+    border: 2px solid var(--teal);
+    background: var(--surface);
+  }
+  .door.has-active .door-num {
+    color: var(--teal);
+  }
+  .active-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--teal-deep);
+    background: var(--teal-soft);
+    padding: 3px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    align-self: flex-start;
+  }
+  .active-pill::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Recent + archive section */
+  .section-h {
+    padding: 32px 22px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .section-h h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .section-h .all {
+    font-size: 12px;
+    color: var(--ink-3);
+    cursor: pointer;
+  }
+
+  .recents {
+    padding: 0 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .recent {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-align: right;
+    width: 100%;
+    color: inherit;
+    font-family: inherit;
+    transition: transform 200ms;
+  }
+  .recent:active { transform: scale(0.98); }
+  .recent-tag {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: var(--teal-soft);
+    color: var(--teal-deep);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+  .recent-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .recent-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .recent-meta {
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 1px;
+  }
+
+  /* New case button */
+  .action-bar {
+    margin-top: auto;
+    padding: 24px 22px calc(20px + env(safe-area-inset-bottom));
+  }
+  .new-case {
+    width: 100%;
+    background: var(--ink);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 22px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: transform 220ms;
+  }
+  .new-case:active { transform: scale(0.985); }
+
+  .footer-note {
+    text-align: center;
+    padding: 10px 22px 0;
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+</style>
+</head>
+<body>
+  <div class="device">
+    <div class="status">
+      <span>18:40</span>
+      <span></span>
+    </div>
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark">R</div>
+        <span>Rightly</span>
+      </div>
+      <div class="me-pill">
+        <span>אילון</span>
+        <div class="dot">א</div>
+      </div>
+    </div>
+
+    <div class="greet-block">
+      <div class="greet-line">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <path d="M6.5 1 1.5 3.5v3.4c0 2.5 2 4.6 5 5 3-.4 5-2.5 5-5V3.5L6.5 1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="m4.5 6.5 1.5 1.5L8.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        מקור אמין · החוק הישראלי
+      </div>
+      <h1 class="question">שלום אילון.<br>איזו זכות לבדוק?</h1>
+      <p class="question-sub">בחר אחת משתי המערכות</p>
+    </div>
+
+    <!-- TWO EQUAL DOORS -->
+    <div class="doors">
+      <button class="door has-active">
+        <span class="door-num">01</span>
+
+        <div class="active-pill">תיק פתוח</div>
+
+        <div class="door-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 4 3 9l11 5 11-5-11-5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M7 12v4.5c0 1.5 3.5 3 7 3s7-1.5 7-3V12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <h2 class="door-title">תלמיד</h2>
+        <p class="door-sub">מול בית הספר</p>
+
+        <div class="topics">
+          <span class="topic">מבחנים</span>
+          <span class="topic">השעיות</span>
+          <span class="topic">התאמות</span>
+          <span class="topic">יחס</span>
+        </div>
+
+        <div class="door-cta">
+          <span class="door-cta-text">המשך תיק</span>
+          <div class="door-cta-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M8 3 4.5 6l3.5 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </button>
+
+      <button class="door">
+        <span class="door-num">02</span>
+
+        <div class="door-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="9" width="20" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M10 9V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <h2 class="door-title">עובד</h2>
+        <p class="door-sub">מול המעסיק</p>
+
+        <div class="topics">
+          <span class="topic">שכר</span>
+          <span class="topic">שעות</span>
+          <span class="topic">פיטורים</span>
+          <span class="topic">יחס</span>
+        </div>
+
+        <div class="door-cta">
+          <span class="door-cta-text">בדיקה</span>
+          <div class="door-cta-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M8 3 4.5 6l3.5 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <div class="section-h">
+      <h3>תיקים אחרונים</h3>
+      <span class="all">הצג הכל</span>
+    </div>
+
+    <div class="recents">
+      <button class="recent">
+        <span class="recent-tag">תלמיד</span>
+        <div class="recent-body">
+          <div class="recent-title">פיטורים בלי הודעה מוקדמת</div>
+          <div class="recent-meta">נסגר · 22.4</div>
+        </div>
+      </button>
+      <button class="recent">
+        <span class="recent-tag">עובד</span>
+        <div class="recent-body">
+          <div class="recent-title">היעדרות לא מאושרת — מה הזכויות</div>
+          <div class="recent-meta">נסגר · 28.4</div>
+        </div>
+      </button>
+    </div>
+
+    <div class="action-bar">
+      <button class="new-case">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>פתח תיק חדש</span>
+      </button>
+      <p class="footer-note">המידע מבוסס על מקורות רשמיים</p>
+    </div>
+  </div>
+</body>
+</html>
