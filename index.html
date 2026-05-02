@@ -30,131 +30,124 @@
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* ─── Hero ─── */
-  .hero {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 64px 32px 32px;
-    text-align: center;
+  /* ─── Top bar ─── */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
   }
-  .brand-mark {
+  .brand {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 8px 16px 8px 12px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-2);
+    font-size: 14px;
+    font-weight: 700;
     letter-spacing: -0.01em;
+    color: var(--ink);
   }
-  .brand-mark .dot {
+  .brand .dot {
     width: 8px; height: 8px;
     border-radius: 50%;
     background: var(--accent);
     box-shadow: 0 0 0 4px oklch(0.62 0.21 28 / 0.15);
   }
-  h1 {
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 800;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
-    margin-bottom: 14px;
-  }
-  h1 .accent {
-    background: linear-gradient(180deg, transparent 62%, oklch(0.92 0.14 90) 62%);
-    padding: 0 4px;
-  }
-  .lede {
-    font-size: clamp(15px, 1.6vw, 18px);
-    color: var(--ink-3);
-    max-width: 580px;
-    margin: 0 auto;
-    font-weight: 400;
-  }
-  .stats {
+  .brand .sub { color: var(--ink-3); font-weight: 500; font-size: 13px; }
+  .counter {
     display: inline-flex;
-    align-items: center;
-    gap: 28px;
-    margin-top: 28px;
-    padding: 14px 24px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-  }
-  .stat { display: flex; flex-direction: column; align-items: center; }
-  .stat .num { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
-  .stat .lbl { font-size: 11px; color: var(--ink-3); font-weight: 500; letter-spacing: 0.02em; margin-top: 2px; }
-  .stat-divider { width: 1px; height: 28px; background: var(--line-2); }
-
-  /* ─── Section heading inside gallery ─── */
-  .section-head {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 32px 32px 12px;
-    display: flex;
     align-items: baseline;
-    justify-content: space-between;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-2);
+    background: var(--bg-2);
+    padding: 6px 12px;
+    border-radius: 999px;
   }
-  .section-head h2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: -0.015em;
-  }
-  .section-head .meta { font-size: 12px; color: var(--ink-3); font-weight: 500; }
+  .counter .current { color: var(--ink); font-size: 14px; }
+  .counter .sep { color: var(--ink-4); }
 
-  /* ─── Gallery ─── */
-  .gallery {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 8px 32px 80px;
+  /* ─── Stage (mockup viewer) ─── */
+  .stage {
+    flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 28px;
+    align-items: center;
+    justify-items: center;
   }
 
-  .screen-card {
+  .viewer-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
-    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    gap: 24px;
+    width: 100%;
+    max-width: 520px;
   }
-  .screen-card:hover { transform: translateY(-6px); }
-  .screen-card:hover .phone { box-shadow: 0 30px 60px -20px oklch(0.18 0.012 60 / 0.35), 0 12px 24px -8px oklch(0.18 0.012 60 / 0.18); }
 
-  /* Phone frame — uses scale() to render mockup at native 420px and shrink it */
+  .viewer-meta {
+    text-align: center;
+    max-width: 460px;
+  }
+  .viewer-num {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .viewer-title {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .viewer-desc {
+    font-size: 14px;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+
+  /* Phone frame — uses scale() to render mockup at native 420px */
   .phone {
-    width: 300px;
-    height: 620px;
+    width: 320px;
+    height: 660px;
     background: oklch(0.10 0.012 60);
-    border-radius: 44px;
+    border-radius: 48px;
     padding: 10px;
     position: relative;
-    box-shadow: 0 20px 40px -16px oklch(0.18 0.012 60 / 0.25), 0 8px 16px -4px oklch(0.18 0.012 60 / 0.12);
-    transition: box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 30px 60px -20px oklch(0.18 0.012 60 / 0.35), 0 12px 24px -8px oklch(0.18 0.012 60 / 0.18);
+    flex-shrink: 0;
   }
   .phone::before {
     content: '';
     position: absolute;
     top: 16px; left: 50%;
     transform: translateX(-50%);
-    width: 90px; height: 24px;
+    width: 100px; height: 26px;
     background: oklch(0.10 0.012 60);
-    border-radius: 12px;
+    border-radius: 14px;
     z-index: 2;
     pointer-events: none;
   }
   .phone-screen {
     width: 100%;
     height: 100%;
-    border-radius: 36px;
+    border-radius: 38px;
     overflow: hidden;
     position: relative;
     background: var(--bg);
@@ -168,40 +161,113 @@
     border: none;
     background: var(--bg);
     display: block;
-    /* 280 / 420 = 0.6667 — content fills the inner screen at native res */
-    transform: scale(0.6667);
+    transform: scale(0.7143);
     transform-origin: top right;
   }
 
-  .screen-meta {
-    text-align: center;
-    max-width: 280px;
+  /* For wide multi-variant mockups, swap phone frame for a wide frame */
+  .wide-stage {
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 1400 / 1100;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+    background: #0a0a0a;
+    position: relative;
+    box-shadow: 0 30px 60px -20px oklch(0.18 0.012 60 / 0.25);
+    container-type: inline-size;
   }
-  .screen-num {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--accent-ink);
-    background: var(--accent-soft);
-    padding: 4px 10px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-  }
-  .screen-title {
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .screen-desc {
-    font-size: 13px;
-    color: var(--ink-3);
-    font-weight: 400;
-    line-height: 1.45;
+  .wide-stage iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1400px;
+    height: 1100px;
+    border: none;
+    transform-origin: top right;
+    transform: scale(calc(100cqw / 1400));
   }
 
+  /* ─── Nav arrows (large clickable side controls) ─── */
+  .nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--line-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--ink);
+    z-index: 10;
+    box-shadow: 0 8px 20px -6px oklch(0.18 0.012 60 / 0.18);
+    transition: transform 200ms, background 200ms, color 200ms;
+  }
+  .nav-arrow:hover { background: var(--ink); color: oklch(0.97 0.008 75); }
+  .nav-arrow:active { transform: translateY(-50%) scale(0.94); }
+  .nav-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+  .nav-arrow.prev { right: 24px; }
+  .nav-arrow.next { left: 24px; }
+
+  /* ─── Bottom thumbnail strip ─── */
+  .thumbs {
+    position: sticky;
+    bottom: 0;
+    background: oklch(1 0 0 / 0.85);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--line);
+    padding: 14px 28px calc(14px + env(safe-area-inset-bottom));
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    align-items: center;
+    justify-content: center;
+  }
+  .thumbs::-webkit-scrollbar { height: 4px; }
+  .thumbs::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 4px; }
+
+  .thumb {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px 8px 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 200ms;
+    color: var(--ink-2);
+    font-family: inherit;
+  }
+  .thumb:hover { border-color: var(--ink-3); }
+  .thumb.active {
+    background: var(--ink);
+    color: oklch(0.97 0.008 75);
+    border-color: var(--ink);
+  }
+  .thumb .num {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: var(--bg-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-2);
+  }
+  .thumb.active .num { background: var(--accent); color: oklch(0.97 0.008 75); }
+  .thumb .name { font-size: 12px; font-weight: 600; letter-spacing: -0.01em; }
+
+  /* ─── Open fullscreen link ─── */
   .open-link {
     display: inline-flex;
     align-items: center;
@@ -209,192 +275,202 @@
     font-size: 12px;
     font-weight: 600;
     color: var(--ink-2);
-    margin-top: 10px;
-    padding: 6px 12px;
+    margin-top: 14px;
+    padding: 8px 14px;
     border: 1px solid var(--line-2);
     border-radius: 999px;
     text-decoration: none;
     transition: all 200ms;
+    background: var(--surface);
   }
   .open-link:hover { background: var(--ink); color: oklch(0.97 0.008 75); border-color: var(--ink); }
 
-  /* ─── Wide card (for multi-variant mockups) ─── */
-  .wide-card {
-    grid-column: 1 / -1;
+  /* Hint about keyboard nav */
+  .hint {
+    position: fixed;
+    top: 78px;
+    right: 28px;
+    font-size: 11px;
+    color: var(--ink-4);
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 28px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    transition: box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1), transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    padding: 6px 10px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 400ms;
   }
-  .wide-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 30px 60px -20px oklch(0.18 0.012 60 / 0.25), 0 12px 24px -8px oklch(0.18 0.012 60 / 0.12);
-  }
-  .wide-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .wide-head-meta { display: flex; flex-direction: column; gap: 4px; text-align: right; }
-  .wide-card .screen-num { align-self: flex-start; }
-  .wide-frame {
-    width: 100%;
+  .hint.show { opacity: 1; }
+  .hint kbd {
+    background: var(--bg-2);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
     border: 1px solid var(--line);
-    border-radius: 20px;
-    overflow: hidden;
-    background: #0a0a0a;
-    position: relative;
-    /* Aspect ratio mirrors the native 1400-wide design */
-    aspect-ratio: 1400 / 1100;
-  }
-  .wide-frame iframe {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 1400px;
-    height: 1100px;
-    border: none;
-    display: block;
-    transform-origin: top right;
-  }
-  /* Scale the wide iframe to fit container width */
-  .wide-frame { container-type: inline-size; }
-  @container (min-width: 0) {
-    .wide-frame iframe { transform: scale(calc(100cqw / 1400)); }
   }
 
-  /* ─── Empty / placeholder card ─── */
-  .placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    text-align: center;
-    padding: 40px 20px;
-    border: 2px dashed var(--line-2);
-    border-radius: 28px;
-    color: var(--ink-3);
-    background: oklch(0.97 0.008 75 / 0.5);
-    min-height: 580px;
-    width: 280px;
-    margin: 0 auto;
-  }
-  .placeholder svg { color: var(--ink-4); }
-  .placeholder .title { font-size: 14px; font-weight: 600; color: var(--ink-2); }
-  .placeholder .sub { font-size: 12px; color: var(--ink-4); max-width: 200px; }
-
-  /* ─── Footer ─── */
-  footer {
-    text-align: center;
-    padding: 32px;
-    font-size: 12px;
-    color: var(--ink-4);
-    border-top: 1px solid var(--line);
-  }
-
-  @media (max-width: 640px) {
-    .hero { padding: 40px 20px 20px; }
-    .gallery { padding: 8px 20px 60px; gap: 24px; }
-    .section-head { padding: 24px 20px 8px; }
-    .stats { gap: 18px; padding: 12px 18px; }
-    .wide-frame { height: 520px; }
+  /* Mobile */
+  @media (max-width: 720px) {
+    .topbar { padding: 14px 18px; }
+    .brand .sub { display: none; }
+    .stage { padding: 20px 12px; }
+    .nav-arrow { width: 44px; height: 44px; }
+    .nav-arrow.prev { right: 8px; }
+    .nav-arrow.next { left: 8px; }
+    .phone { width: 280px; height: 580px; }
+    .phone-screen iframe { transform: scale(0.625); }
+    .viewer-title { font-size: 20px; }
+    .thumbs { padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); justify-content: flex-start; }
+    .hint { display: none; }
   }
 </style>
 </head>
 <body>
 
-  <section class="hero">
-    <div class="brand-mark">
+  <header class="topbar">
+    <div class="brand">
       <span class="dot"></span>
-      <span>Rightly · Home Screen Explorations</span>
+      <span>Rightly</span>
+      <span class="sub">· Home Screen Explorations</span>
     </div>
-    <h1>גלריית הדמיות של <span class="accent">מסך הבית</span></h1>
-    <p class="lede">כל הוריאציות והכיוונים העיצוביים למסך הבית של האפליקציה — במסגרת מכשיר אמיתית, בדיוק כפי שייראה ביד.</p>
-
-    <div class="stats">
-      <div class="stat"><span class="num" id="screenCount">2</span><span class="lbl">הדמיות</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><span class="num">RTL</span><span class="lbl">עברית</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat"><span class="num">iOS</span><span class="lbl">סגנון</span></div>
+    <div class="counter">
+      <span class="current" id="currentIdx">1</span>
+      <span class="sep">/</span>
+      <span id="totalIdx">2</span>
     </div>
-  </section>
+  </header>
 
-  <div class="section-head">
-    <h2>וריאציות מסך הבית</h2>
-    <span class="meta" id="metaCount">2 הדמיות</span>
+  <button class="nav-arrow prev" id="prevBtn" aria-label="הקודם">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="m12 4-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button class="nav-arrow next" id="nextBtn" aria-label="הבא">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="m8 4 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="hint" id="hint">
+    נווט עם <kbd>←</kbd> <kbd>→</kbd>
   </div>
 
-  <main class="gallery" id="gallery">
-
-    <!-- Mockup 01 — single phone -->
-    <article class="screen-card">
-      <div class="phone">
-        <div class="phone-screen">
-          <iframe src="mockups/01-home.html" title="Home v1" loading="lazy" scrolling="no"></iframe>
-        </div>
-      </div>
-      <div class="screen-meta">
-        <span class="screen-num">01</span>
-        <div class="screen-title">Home · Anti-Reflex</div>
-        <div class="screen-desc">גרפיט חמים עם אקצנט קורל — תיק פתוח, בחירת תחום ותיקים אחרונים</div>
-        <a class="open-link" href="mockups/01-home.html" target="_blank">
-          פתח במסך מלא
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-            <path d="M7 4 4 7M4 4h3v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-    </article>
-
-    <!-- Mockup 02 — wide multi-variant -->
-    <article class="wide-card" data-variants="3">
-      <div class="wide-head">
-        <div class="wide-head-meta">
-          <span class="screen-num">02 · 3 וריאציות</span>
-          <div class="screen-title">3 כיוונים מודרניים</div>
-          <div class="screen-desc">Trust Indigo · Executive Navy · Vibrant Modern — שלוש תפיסות עיצוב על אותו מסך בית</div>
-        </div>
-        <a class="open-link" href="mockups/02-design-variations.html" target="_blank">
-          פתח במסך מלא
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-            <path d="M7 4 4 7M4 4h3v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-      <div class="wide-frame">
-        <iframe src="mockups/02-design-variations.html" title="Home v2 — 3 variations" loading="lazy"></iframe>
-      </div>
-    </article>
-
-    <!-- Placeholder for next mockup -->
-    <div class="placeholder">
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect x="10" y="4" width="20" height="32" rx="4" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M20 14v12M14 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <div class="title">ההדמיה הבאה</div>
-      <div class="sub">שלח לי את הוריאציה הבאה של מסך הבית ואוסיף אותה לכאן</div>
-    </div>
-
+  <main class="stage" id="stage">
+    <!-- viewer is rendered here by JS -->
   </main>
 
-  <footer>
-    Rightly · Home Screen Gallery · עוצב ופותח באהבה
-  </footer>
+  <nav class="thumbs" id="thumbs">
+    <!-- thumbs are rendered here by JS -->
+  </nav>
 
   <script>
-    const cards = document.querySelectorAll('.screen-card, .wide-card');
-    const count = cards.length;
-    document.getElementById('screenCount').textContent = count;
-    document.getElementById('metaCount').textContent = count + ' הדמיות';
+    // ─── Mockup data — add new entries here ───
+    const mockups = [
+      {
+        num: '01',
+        name: 'Anti-Reflex',
+        title: 'Home · Anti-Reflex',
+        desc: 'גרפיט חמים עם אקצנט קורל — תיק פתוח, בחירת תחום ותיקים אחרונים',
+        src: 'mockups/01-home.html',
+        type: 'phone',
+      },
+      {
+        num: '02',
+        name: '3 גרסאות',
+        title: '3 כיוונים מודרניים',
+        desc: 'Trust Indigo · Executive Navy · Vibrant Modern — שלוש תפיסות עיצוב על אותו מסך בית',
+        src: 'mockups/02-design-variations.html',
+        type: 'wide',
+      },
+    ];
+
+    let current = 0;
+
+    const stage = document.getElementById('stage');
+    const thumbs = document.getElementById('thumbs');
+    const currentIdx = document.getElementById('currentIdx');
+    const totalIdx = document.getElementById('totalIdx');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const hint = document.getElementById('hint');
+
+    totalIdx.textContent = mockups.length;
+
+    function render() {
+      const m = mockups[current];
+      const frame = m.type === 'wide'
+        ? `<div class="wide-stage"><iframe src="${m.src}" loading="lazy"></iframe></div>`
+        : `<div class="phone"><div class="phone-screen"><iframe src="${m.src}" loading="lazy" scrolling="no"></iframe></div></div>`;
+
+      stage.innerHTML = `
+        <div class="viewer-wrap">
+          ${frame}
+          <div class="viewer-meta">
+            <span class="viewer-num">${m.num}</span>
+            <div class="viewer-title">${m.title}</div>
+            <div class="viewer-desc">${m.desc}</div>
+            <a class="open-link" href="${m.src}" target="_blank">
+              פתח במסך מלא
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path d="M7 4 4 7M4 4h3v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      `;
+
+      currentIdx.textContent = current + 1;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === mockups.length - 1;
+
+      // Update URL hash without scrolling
+      history.replaceState(null, '', '#' + (current + 1));
+
+      renderThumbs();
+    }
+
+    function renderThumbs() {
+      thumbs.innerHTML = mockups.map((m, i) => `
+        <button class="thumb ${i === current ? 'active' : ''}" data-idx="${i}">
+          <span class="num">${m.num}</span>
+          <span class="name">${m.name}</span>
+        </button>
+      `).join('');
+
+      thumbs.querySelectorAll('.thumb').forEach(btn => {
+        btn.addEventListener('click', () => {
+          current = parseInt(btn.dataset.idx, 10);
+          render();
+        });
+      });
+
+      // Scroll active thumb into view
+      const active = thumbs.querySelector('.thumb.active');
+      if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    prevBtn.addEventListener('click', () => { if (current > 0) { current--; render(); } });
+    nextBtn.addEventListener('click', () => { if (current < mockups.length - 1) { current++; render(); } });
+
+    // Keyboard nav (RTL: ArrowRight = previous)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { if (current > 0) { current--; render(); } }
+      else if (e.key === 'ArrowLeft') { if (current < mockups.length - 1) { current++; render(); } }
+    });
+
+    // Init from URL hash
+    const hash = parseInt(window.location.hash.slice(1), 10);
+    if (hash && hash >= 1 && hash <= mockups.length) current = hash - 1;
+
+    render();
+
+    // Show keyboard hint briefly on desktop
+    if (window.matchMedia('(min-width: 721px)').matches) {
+      setTimeout(() => hint.classList.add('show'), 600);
+      setTimeout(() => hint.classList.remove('show'), 4200);
+    }
   </script>
 
 </body>
