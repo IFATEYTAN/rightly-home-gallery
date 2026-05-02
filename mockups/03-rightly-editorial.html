@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rightly · Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  html, body, #root { margin: 0; padding: 0; min-height: 100vh; }
+  body { background: oklch(0.97 0.008 60); }
+</style>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="env,react">
+const { useState, useEffect } = React;
+
+function RightlyHome() {
+  const [hovered, setHovered] = useState(null);
+  const [time, setTime] = useState('');
+
+  useEffect(() => {
+    const update = () => {
+      const d = new Date();
+      const h = d.getHours();
+      const greeting =
+        h < 6 ? 'לילה טוב' :
+        h < 12 ? 'בוקר טוב' :
+        h < 17 ? 'צהריים טובים' :
+        h < 21 ? 'ערב טוב' : 'לילה טוב';
+      setTime(greeting);
+    };
+    update();
+  }, []);
+
+  const sections = [
+    {
+      id: 'school',
+      kicker: '01',
+      title: 'בית הספר',
+      subtitle: 'מורים, מבחנים, השעיות, יחס לא הוגן',
+      cta: 'בדיקת זכויות',
+      tone: 'apricot',
+      shape: 'circle',
+    },
+    {
+      id: 'work',
+      kicker: '02',
+      title: 'עבודה',
+      subtitle: 'שכר, הפסקות, פיטורים, יחס במקום העבודה',
+      cta: 'בדיקת זכויות',
+      tone: 'sage',
+      shape: 'square',
+    },
+    {
+      id: 'me',
+      kicker: '03',
+      title: 'האזור שלי',
+      subtitle: 'המקרים, המסמכים והכלים שלך',
+      cta: 'כניסה לאזור',
+      tone: 'plum',
+      shape: 'arch',
+    },
+  ];
+
+  const toneStyles = {
+    apricot: {
+      bg: 'oklch(0.93 0.06 50)',
+      bgHover: 'oklch(0.88 0.10 50)',
+      ink: 'oklch(0.30 0.08 40)',
+      mark: 'oklch(0.65 0.18 45)',
+    },
+    sage: {
+      bg: 'oklch(0.92 0.04 155)',
+      bgHover: 'oklch(0.86 0.07 155)',
+      ink: 'oklch(0.30 0.05 155)',
+      mark: 'oklch(0.55 0.10 155)',
+    },
+    plum: {
+      bg: 'oklch(0.91 0.03 320)',
+      bgHover: 'oklch(0.85 0.06 320)',
+      ink: 'oklch(0.28 0.06 320)',
+      mark: 'oklch(0.50 0.12 320)',
+    },
+  };
+
+  return (
+    <div
+      dir="rtl"
+      style={{
+        minHeight: '100vh',
+        background: 'oklch(0.97 0.008 60)',
+        fontFamily: '"Heebo", system-ui, sans-serif',
+        color: 'oklch(0.22 0.015 50)',
+        padding: '0',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: '-180px',
+          right: '-120px',
+          width: '480px',
+          height: '480px',
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, oklch(0.92 0.10 55 / 0.55) 0%, oklch(0.97 0.008 60 / 0) 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div style={{ position: 'relative', maxWidth: '440px', margin: '0 auto', padding: '24px 24px 48px' }}>
+        <header
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '56px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div
+              style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '10px',
+                background: 'oklch(0.30 0.04 50)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'oklch(0.93 0.06 60)',
+                fontFamily: '"Fraunces", serif',
+                fontWeight: 800,
+                fontSize: '18px',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              R
+            </div>
+            <span
+              style={{
+                fontFamily: '"Fraunces", serif',
+                fontSize: '20px',
+                fontWeight: 600,
+                letterSpacing: '-0.01em',
+                color: 'oklch(0.25 0.02 50)',
+              }}
+            >
+              Rightly
+            </span>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 12px 6px 6px',
+              background: 'oklch(1 0 0 / 0.7)',
+              borderRadius: '999px',
+              border: '1px solid oklch(0.30 0.04 50 / 0.08)',
+            }}
+          >
+            <span style={{ fontSize: '13px', fontWeight: 500, color: 'oklch(0.35 0.02 50)' }}>אילון</span>
+            <div
+              style={{
+                width: '26px',
+                height: '26px',
+                borderRadius: '50%',
+                background: 'oklch(0.85 0.10 55)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '12px',
+                fontWeight: 700,
+                color: 'oklch(0.30 0.08 40)',
+              }}
+            >
+              א
+            </div>
+          </div>
+        </header>
+
+        <section style={{ marginBottom: '48px' }}>
+          <div
+            style={{
+              fontSize: '13px',
+              fontWeight: 500,
+              color: 'oklch(0.55 0.06 50)',
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              marginBottom: '14px',
+            }}
+          >
+            {time}, אילון
+          </div>
+
+          <h1
+            style={{
+              fontFamily: '"Fraunces", serif',
+              fontSize: '54px',
+              lineHeight: '0.95',
+              fontWeight: 600,
+              letterSpacing: '-0.03em',
+              color: 'oklch(0.22 0.015 50)',
+              margin: 0,
+              marginBottom: '20px',
+            }}
+          >
+            תדע
+            <br />
+            <span
+              style={{
+                fontStyle: 'italic',
+                fontWeight: 400,
+                color: 'oklch(0.55 0.16 45)',
+              }}
+            >
+              מה
+            </span>{' '}
+            שמגיע
+            <br />
+            לך.
+          </h1>
+
+          <p
+            style={{
+              fontSize: '15px',
+              lineHeight: '1.55',
+              color: 'oklch(0.40 0.02 50)',
+              maxWidth: '32ch',
+              margin: 0,
+              fontWeight: 400,
+            }}
+          >
+            בלי לחפש בגוגל, בלי ניסוחים מסובכים. תאר את המצב, ותקבל הסבר ברור על הזכויות שלך לפי החוק בישראל.
+          </p>
+        </section>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          {sections.map((s, i) => {
+            const t = toneStyles[s.tone];
+            const isHover = hovered === s.id;
+            const isLarge = i === 0;
+            return (
+              <button
+                key={s.id}
+                onMouseEnter={() => setHovered(s.id)}
+                onMouseLeave={() => setHovered(null)}
+                onFocus={() => setHovered(s.id)}
+                onBlur={() => setHovered(null)}
+                style={{
+                  background: isHover ? t.bgHover : t.bg,
+                  border: 'none',
+                  borderRadius: isLarge ? '28px' : '20px',
+                  padding: isLarge ? '28px 26px' : '22px 24px',
+                  textAlign: 'right',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'background 320ms cubic-bezier(0.22, 1, 0.36, 1), transform 320ms cubic-bezier(0.22, 1, 0.36, 1)',
+                  transform: isHover ? 'translateY(-2px)' : 'translateY(0)',
+                  fontFamily: 'inherit',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px',
+                }}
+              >
+                <div
+                  aria-hidden
+                  style={{
+                    position: 'absolute',
+                    top: '-30px',
+                    left: '-30px',
+                    width: isLarge ? '140px' : '110px',
+                    height: isLarge ? '140px' : '110px',
+                    background: t.mark,
+                    opacity: 0.18,
+                    borderRadius:
+                      s.shape === 'circle' ? '50%' :
+                      s.shape === 'arch' ? '50% 50% 0 0' : '24px',
+                    transition: 'transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms ease',
+                    transform: isHover
+                      ? `scale(1.08) rotate(${s.shape === 'square' ? '8deg' : '0deg'})`
+                      : `scale(1) rotate(${s.shape === 'square' ? '6deg' : '0deg'})`,
+                  }}
+                />
+
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
+                >
+                  <div style={{ flex: 1 }}>
+                    <div
+                      style={{
+                        fontSize: '11px',
+                        fontWeight: 600,
+                        letterSpacing: '0.12em',
+                        color: t.mark,
+                        marginBottom: '6px',
+                      }}
+                    >
+                      {s.kicker}
+                    </div>
+                    <h2
+                      style={{
+                        fontFamily: '"Fraunces", serif',
+                        fontSize: isLarge ? '32px' : '26px',
+                        fontWeight: 600,
+                        letterSpacing: '-0.02em',
+                        margin: 0,
+                        marginBottom: '6px',
+                        color: t.ink,
+                        lineHeight: '1.05',
+                      }}
+                    >
+                      {s.title}
+                    </h2>
+                    <p
+                      style={{
+                        fontSize: '13.5px',
+                        lineHeight: '1.45',
+                        color: t.ink,
+                        opacity: 0.72,
+                        margin: 0,
+                        maxWidth: '28ch',
+                      }}
+                    >
+                      {s.subtitle}
+                    </p>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      padding: '8px 12px',
+                      background: 'oklch(1 0 0 / 0.65)',
+                      borderRadius: '999px',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      color: t.ink,
+                      whiteSpace: 'nowrap',
+                      flexShrink: 0,
+                      marginRight: '12px',
+                      transition: 'transform 320ms cubic-bezier(0.22, 1, 0.36, 1)',
+                      transform: isHover ? 'translateX(-4px)' : 'translateX(0)',
+                    }}
+                  >
+                    {s.cta}
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      style={{ transform: 'rotate(180deg)' }}
+                    >
+                      <path d="M2 6h8m-3-3 3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        <footer
+          style={{
+            marginTop: '36px',
+            paddingTop: '20px',
+            borderTop: '1px solid oklch(0.30 0.04 50 / 0.10)',
+            display: 'flex',
+            gap: '10px',
+            alignItems: 'flex-start',
+          }}
+        >
+          <div
+            style={{
+              fontFamily: '"Fraunces", serif',
+              fontSize: '14px',
+              fontStyle: 'italic',
+              color: 'oklch(0.55 0.06 50)',
+              flexShrink: 0,
+              marginTop: '1px',
+            }}
+          >
+            הערה.
+          </div>
+          <p
+            style={{
+              fontSize: '12.5px',
+              lineHeight: '1.55',
+              color: 'oklch(0.45 0.02 50)',
+              margin: 0,
+            }}
+          >
+            המידע מבוסס על החוק הישראלי ועל מקורות רשמיים. הוא נועד לעזור לך להבין, לא להחליף ייעוץ משפטי אישי.
+          </p>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<RightlyHome />);
+</script>
+
+</body>
+</html>
